@@ -7,3 +7,6 @@
 
   James Krepelka
     - I am just some guy that does stuff (for now).
+
+  Dickens Leung
+    - I like technology and long walks on the beach.
