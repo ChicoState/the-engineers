@@ -10,3 +10,6 @@
 
   Dickens Leung
     - I like technology and long walks on the beach.
+    
+  Yuqin Zhang
+    - I like the program like image processing.
