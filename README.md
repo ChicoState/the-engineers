@@ -9,7 +9,7 @@
     - I am just some guy that does stuff (for now).
 
   Dickens Leung
-    - I like technology and long walks on the beach.
+    - I like technology and long walks a the beach.
     
   Yuqin Zhang
     - I like the program like image processing.
