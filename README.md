@@ -13,3 +13,6 @@
     
   Yuqin Zhang
     - I like the program like image processing.
+
+  Siddharth Sridharan
+    - I like JavaScript.
