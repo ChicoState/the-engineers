@@ -5,45 +5,40 @@
 
 
 # Meet the Team
-## Austin Walter : [Role]  
+## Austin Walter : Project Manager / Source Control / Developer  
 * Senior
 * Computer Engineering student
 * [Expertise/Experience]
 * Likes california rolls
 
-## James Krepelka : [Role]  
+## James Krepelka : Source Control Guy / Back-end Developer
 * Senior
 * Computer Science student
-* I have a lot of experience programming, especially with different web technologies.
+* I have a decent amount experience programming, especially with different web technologies.
 * I am busy.
 
-## Dickens Leung : [Role]  
+## Dickens Leung : QA Technician
 * [Year]
 * [Major] student
 * [Expertise/Experience]
 * I like technology and long walks a the beach.
 
-## Yuqin Zhang : [Role]  
+## Yuqin Zhang : Designer
 * [Year]
 * [Major] student
 * [Expertise/Experience]
 * I like the program like image processing.
 
-## Siddharth Sridharan : [Role]  
+## Siddharth Sridharan : Front-end Dev / Designer
 * [Year]
 * [Major] student
 * [Expertise/Experience]
 * I like JavaScript.
 
-# Roles:
+# Jobs - Roles:
 * Project Manager
-    * The Glue
 * Designer
-    * UX
-* Lead Developer
-    * Documentation
-    * Code Standards
+* Front-End Developer
+* Back-End Developer
 * Lead QA Technician
-    * Testing
 * Source Control Administrator
-    * Branching
