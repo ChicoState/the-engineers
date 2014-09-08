@@ -24,9 +24,9 @@
 * I like technology and long walks a the beach.
 
 ## Yuqin Zhang : Designer
-* [Year]
-* [Major] student
-* [Expertise/Experience]
+* Junior
+* Computer Science student
+* I ever maked a programming about movie tickets booking system using C++.
 * I like the program like image processing.
 
 ## Siddharth Sridharan : Front-end Dev / Designer
