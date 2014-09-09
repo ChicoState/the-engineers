@@ -35,6 +35,12 @@
 * [Expertise/Experience]
 * I like JavaScript.
 
+## Paul Dilley : Latecomer, Python programmer, netsec/auth
+* Senior
+* Computer Science student
+* VBA regression testing software for CAN driven AC ohmmeter
+* I like networking and network security.  Bitcoin's awesome, and so is LEDBaT!
+
 # Jobs - Roles:
 * Project Manager
 * Designer
