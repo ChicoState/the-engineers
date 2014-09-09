@@ -39,7 +39,7 @@
 * Senior
 * Computer Science student
 * VBA regression testing software for CAN driven AC ohmmeter
-* I like networking and network security.  Bitcoin's awesome, and so is LEDBaT!
+* I like networking and network security.  Bitcoin's awesome, and so is ledbat!
 
 # Jobs - Roles:
 * Project Manager
