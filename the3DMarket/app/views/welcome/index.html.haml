@@ -1,19 +1,42 @@
 %header
-  The 3D-Marketplace
-%main
-  %h2
-    Authors:
+  %ul.heading_bar
+    %li
+      %logo
+        %img(src="http://www.placekitten.com/100/30")
+    %li
+      Browse
+    %li
+      Create
+    %li
+      Upload
+    %li
+      %div.search
+        %input
+    %li
+      Join/Sign In
+
+%div.full_featured
+
+%div.semi_featured
+  %div.feature_box
+  %div.feature_box
+  %div.feature_box
+
+%div.manufactured
+
+%footer
+  %logo
   %ul
-    - ary = []
-    - ary << {:name=>'Austin Walter', :role=>'Project Manager / Source Control / Developer'}
-    - ary << {:name=>'James Krepelka', :role=>'Source Control Guy / Back-end Developer'}
-    - ary << {:name=>'Dickens Leung', :role=>'QA Technician'}
-    - ary << {:name=>'Yuqin Zhang', :role=>'Designer'}
-    - ary << {:name=>'Siddharth Sridharan', :role=>'Front-end Dev / Designer'}
-    - ary.each do |p|
-      %li
-        %span.name
-          = p[:name]
-        = ":"
-        %span.role
-          = p[:role]
+    %li
+      %ul
+        %li.header
+          About Us
+        %li
+    %li
+      %ul
+        %li
+          Contact Us
+    %li
+      %ul
+        %li
+          Stuff
