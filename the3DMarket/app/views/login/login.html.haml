@@ -2,20 +2,34 @@
   The 3D-Marketplace
 %div.main
   %div.login_box
-    %form.login_form
+    - action_path = try_login_path
+    - if cookies[:user].present?
+      - @user = User.find(cookies[:user])
+      - action_path = logout_path
+    - action_path[0] = '' # Remove / from path
+    = form_tag(action: action_path,class: "login_form") do
       %div.heading
         Welcome to the 3D-Marketplace
       %div.error
+        - if cookies[:error].present?
+          = cookies[:error]
+          - cookies[:error] = nil
       %div.content
-        %div.content_row
-          %div.content_value
-            %input.username{"type"=>"text", "name"=>"username","placeholder"=>"username"}
-        %div.content_row
-          %div.content_value
-            %input.password{"type"=>"password", "name"=>"password","placeholder"=>"password"}
+        - if @user.present?
+          %div.content_row
+            You're already logged in as
+            = @user.username
+        - else
+          %div.content_row
+            %div.content_value
+              %input.username{:type =>"text", :name =>"username", :placeholder =>"username"}
+          %div.content_row
+            %div.content_value
+              %input.password{:type =>"password", :name =>"password",:placeholder =>"password"}
       %div.buttons
-        %input{"type"=>"submit", "value"=>"Log In!"}
+        - if @user.present?
+          %input{"type"=>"submit", "value"=>"Log Out!"}
+        - else
+          %input{"type"=>"submit", "value"=>"Log In!"}
 %div.footer
-  face
-      
     
