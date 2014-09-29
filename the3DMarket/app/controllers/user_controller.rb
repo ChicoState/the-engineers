@@ -20,7 +20,7 @@ class UserController < ApplicationController
   def try_login
     @user = User.find_by_username(params[:username])
     if @user.present?
-      @user.hash_pass = PasswordHash.createHash(params[:password])
+      @user.last_log = Time.now
       @user.save
       if PasswordHash.validatePassword(params[:password],@user.hash_pass)
         #Login cookie expires after an hour.
@@ -36,7 +36,6 @@ class UserController < ApplicationController
   # Logs out any user and deletes any session data and cookies.
   def logout
     @user = nil
-    reset_session
     cookies[:user] = nil
     redirect_to(login_path)
   end
