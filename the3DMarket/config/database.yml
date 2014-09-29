@@ -1,5 +1,4 @@
-default: &default
-  default: &default
+default: 
   adapter: mysql
   encoding: utf8
   database: SE_3DEx
