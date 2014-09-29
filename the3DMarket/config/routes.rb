@@ -1,14 +1,44 @@
 Rails.application.routes.draw do
-  get 'welcome/index'
-  get 'login' => 'login#login'
-  post 'logout' => 'login#logout'
-  post 'try_login' => 'login#try_login'
+  
+  # Main Controller
+  ## Frontpage
+  root 'main#index'
+  ## About
+  #get 'about' => 'main#about'
+  
+  # Author Controller
+  ## View
+  #get 'a/:id' => 'author#show'
+  ## Search
+  #get 'a/search/:query' => 'author#search'
+
+  # User Controller
+  ## Show
+  #get 'u/:id' => 'user#show'
+  ## Sign Up
+  #get 'u/create' => 'user#create'
+  ## Settings
+  #get 'u/view' => 'user#index'
+  ## Login
+  get 'login' => 'user#login'
+  post 'logout' => 'user#logout'
+  post 'try_login' => 'user#try_login'
+  
+  # Design Controller
+  ## View
+  #get 'd/:id' => 'design#show'
+  ## Upload
+  #get 'd/create' => 'design#create'
+  ## Search
+  #get 'd/search/:query' => 'design#search'
+  ## View All
+  #get 'd/view-all' => 'design#index'
+  
+  #get 'login' => 'login#login'
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
-  root 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
