@@ -27,7 +27,8 @@ Rails.application.routes.draw do
   
   # Design Controller
   ## Upload
-  #get 'd/create' => 'design#create'
+  get 'd/create' => 'design#create'
+  post 'd/try_create' => 'design#try_create'
   ## Search
   #get 'd/search/:query' => 'design#search'
   ## View All

@@ -68,6 +68,7 @@ class UserController < ApplicationController
     else
       cookies[:error] = "A user with that password was not found"
     end
+    @user = nil
     redirect_to(login_path)
   end
   # Logs out any user and deletes any session data and cookies.

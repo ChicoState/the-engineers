@@ -1,0 +1,13 @@
+= form_tag '/d/try_create', { :multipart => true } do
+  %p
+    %input{:type =>"text", :name =>"title", :placeholder =>"Design Title"}
+  %p
+    %textarea{:name =>"sdesc", :placeholder =>"Design Short Description"}
+  %p
+    STL file
+    = file_field_tag 'stl_file'
+  %p
+    Image file
+    = file_field_tag 'image_file'
+  %p
+    = submit_tag "Upload"
