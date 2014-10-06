@@ -5,7 +5,7 @@
     - @designs.each do |design| 
       .design
         .picture
-          %img{:src => "imgs/2.jpg"}
+          %img{:src => design.imagefilepath}
         .name
           %h4
             %a{:href => design_path(design.id)}
