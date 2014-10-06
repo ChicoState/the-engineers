@@ -1,6 +1,13 @@
+require 'pp'
+
 class DesignController < ApplicationController
   # Design View page
   def show
+    if params[:id].nil? # Handle 
+      redirect_to d_view_all_path
+    else
+      @design = Design.find(params[:id])
+    end
   end
   # Design Upload page
   def create

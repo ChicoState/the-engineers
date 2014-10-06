@@ -1,17 +1,18 @@
 .content
-  %h2 Design1
+  %h2
+    = @design.title
   .clear
-  %img{:src => "imgs/1.jpg"}/
+  %img{:src => @design.imagefilepath}
   %select.controls
     %option{:value => "1"} Controls
     %option{:value => "2"} Controls2
     %option{:value => "3"} Controls3
   .clear
   .print
-    %input{:type => "button", :value => "Print"}/
+    %input{:type => "button", :value => "Print"}
     %select.settings
       %option{:value => "1"} Settings
       %option{:value => "2"} Settings2
       %option{:value => "3"} Settings3
-    %input{:type => "button", :value => "Download"}/
-    %input{:type => "button", :value => "License"}/
+    %input{:type => "button", :value => "Download"}
+    %input{:type => "button", :value => "License"}
