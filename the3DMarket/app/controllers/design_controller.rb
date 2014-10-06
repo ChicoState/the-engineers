@@ -17,5 +17,6 @@ class DesignController < ApplicationController
   end
   # Design View All page
   def index
+    @designs = Design.first(10)
   end
 end
