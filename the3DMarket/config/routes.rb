@@ -16,7 +16,8 @@ Rails.application.routes.draw do
   ## Show
   #get 'u/:id' => 'user#show'
   ## Sign Up
-  #get 'u/create' => 'user#create'
+  get 'u/create' => 'user#create'
+  post 'u/try_create' => 'user#try_create'
   ## Settings
   #get 'u/view' => 'user#index'
   ## Login
