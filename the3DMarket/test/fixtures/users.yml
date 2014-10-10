@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  username: MyString
+  email: MyString
+  hash_pass: MyString
+  salt: MyString
+  last_log: 2014-09-20 20:22:40
+  timestamps: MyString
+
+two:
+  username: MyString
+  email: MyString
+  hash_pass: MyString
+  salt: MyString
+  last_log: 2014-09-20 20:22:40
+  timestamps: MyString
