@@ -26,7 +26,23 @@ Feature: Signing up
 		Then they should see the short password error "That password is too short"
 		When they sign up with no password and confirm_password
 		Then they should see the short password error "That password is too short"
-	
+
+		Given a user visits the Signup page "/u/create"
+		When they sign up with symbols for the username "~!@#$%^&*()_=+',./<>?;':[]\|}"
+		Then they should not be able to create the user
+
+		Given a user visits the Signup page "/u/create"
+		When they sign up with a really long username "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+		Then they should not be able to create the user
+
+		Given a user visits the Signup page "/u/create"
+		When they sign up with spaces in the username "test test test"
+		Then they should not be able to create the user
+
+		Given a user visits the Signup page "/u/create"
+		When they sign up with an email for the username "1234@gmail.com"
+		Then they should not be able to create the user
+
 	Scenario: Successful Signup
 
 		Given a user visits the Signup page "/u/create"

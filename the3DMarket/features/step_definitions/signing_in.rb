@@ -3,95 +3,58 @@ Given /^a user visits the Login page$/ do
 end
 
 #Log in with invalid information
-When /^they submit invalid information$/ do
-	fill_in "username",	with: "127.0.0.1"
-	fill_in "password",	with: "failpassword"
-	click_button "Log In!"
-end
-
-When /^they submit invalid information_2$/ do
+When /^they submit an email for the username$/ do
 	fill_in "username",	with: "test@mail.csuchico.edu"
 	fill_in "password",	with: "failpassword"
 	click_button "Log In!"
 end
 
-When /^they submit invalid information_3$/ do
-	fill_in "username",	with: "~!@#$%^&*()_+=-`,./<>?;':[]\|}{"
+When /^they submit "(.*?)" for the username$/ do |symbols|
+	fill_in "username",	with: symbols
 	fill_in "password",	with: "failpassword"
 	click_button "Log In!"
 end
 
-When /^they submit invalid information_4$/ do
-	fill_in "username",	with: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-	fill_in "password",	with: "f"
+When /^they submit the username "(.*?)"$/ do |long_username|
+	fill_in "username",	with: long_username
+	fill_in "password",	with: "ffff"
 	click_button "Log In!"
 end
 
-When /^they submit invalid information_5$/ do
+When /^they submit spaces in the username$/ do
 	fill_in "username",	with: "test test test"
 	fill_in "password",	with: "failpassword"
 	click_button "Log In!"
 end
 
-When /^they submit invalid information_6$/ do
-	fill_in "username",	with: ""
-	fill_in "password",	with: ""
+When /^they submit no information for the username and password$/ do
 	click_button "Log In!"
 end
 
-When /^they submit invalid information_7$/ do
+When /^they submit a space for the username$/ do
 	fill_in "username",	with: " "
 	fill_in "password",	with: "failpassword"
 	click_button "Log In!"
 end
 
-When /^they submit invalid information_8$/ do
+When /^they submit a password under 4 characters$/ do
 	fill_in "username",	with: "()()()("
-	fill_in "password",	with: "failpassword"
+	fill_in "password",	with: " "
 	click_button "Log In!"
 end
 
-When /^they submit invalid information_9$/ do
-	fill_in "username",	with: ".,;:'"""
-	fill_in "password",	with: "failpassword"
-	click_button "Log In!"
-end
-
+#error message
 Then /^they should see an error message$/ do
 	page.should have_content "A user with that password was not found"
 end
 
 #Log in with valid information
-When /^they submit valid information$/ do
+When /^they submit a user information that is in the database$/ do
 	fill_in "username",	with: "test"
 	fill_in "password",	with: "test"
 	click_button "Log In!"
 end
 
-When /^they submit valid information_2$/ do
-	fill_in "username",	with: "123456789"
-	fill_in "password",	with: "test"
-	click_button "Log In!"
-end
-
-When /^they submit valid information_3$/ do
-	fill_in "username",	with: "ViVaNcE"
-	fill_in "password",	with: "test"
-	click_button "Log In!"
-end
-
-When /^they submit valid information_4$/ do
-	fill_in "username",	with: "Under_Score-"
-	fill_in "password",	with: "test"
-	click_button "Log In!"
-end
-
-When /^they submit valid information_5$/ do
-	fill_in "username",	with: "Period."
-	fill_in "password",	with: "test"
-	click_button "Log In!"
-end
-
 Then /^they should see the logout page$/ do
-	page.should have_content "Logout"
+	page.should have_content "Log Out!"
 end

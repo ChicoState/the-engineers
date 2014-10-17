@@ -1,59 +1,36 @@
 Feature: Signing in
 
 	Scenario: Unsuccessful Login
-		Given a user visits the Login page
-		When they submit invalid information
-		Then they should see an error message
 		
 		Given a user visits the Login page
-		When they submit invalid information_2
+		When they submit an email for the username
 		Then they should see an error message
 
 		Given a user visits the Login page
-		When they submit invalid information_3
+		When they submit "~!@#$%^&*()_+=-`,./<>?;':[]\|}" for the username
 		Then they should see an error message
 
 		Given a user visits the Login page
-		When they submit invalid information_4
+		When they submit the username "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
 		Then they should see an error message
 
 		Given a user visits the Login page
-		When they submit invalid information_5
+		When they submit spaces in the username
 		Then they should see an error message
 
 		Given a user visits the Login page
-		When they submit invalid information_6
+		When they submit no information for the username and password
 		Then they should see an error message
 
 		Given a user visits the Login page
-		When they submit invalid information_7
+		When they submit a space for the username
 		Then they should see an error message
 
 		Given a user visits the Login page
-		When they submit invalid information_8
-		Then they should see an error message
-
-		Given a user visits the Login page
-		When they submit invalid information_9
+		When they submit a password under 4 characters
 		Then they should see an error message
 
 	Scenario: Successful Login
 		Given a user visits the Login page
-		When they submit valid information
-		Then they should see the logout page
-
-		Given a user visits the Login page
-		When they submit valid information_2
-		Then they should see the logout page
-
-		Given a user visits the Login page
-		When they submit valid information_3
-		Then they should see the logout page
-
-		Given a user visits the Login page
-		When they submit valid information_4
-		Then they should see the logout page
-
-		Given a user visits the Login page
-		When they submit valid information_5
+		When they submit a user information that is in the database
 		Then they should see the logout page

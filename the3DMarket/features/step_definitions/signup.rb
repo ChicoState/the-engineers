@@ -66,6 +66,39 @@ When /^they sign up with no password and confirm_password$/ do
 	click_button "Create!"
 end
 
+When /^they sign up with symbols for the username "(.*?)"$/ do |symbols|
+	fill_in "email",		with: "1234@gmail.com"
+	fill_in "username",		with: symbols
+	fill_in "password",		with: "1234"
+	fill_in "confirm_password",	with: "1234"
+	click_button "Create!"
+end
+
+When /^they sign up with a really long username "(.*?)"$/ do |long_name|
+	fill_in "email",		with: "12345@gmail.com"
+	fill_in "username",		with: long_name
+	fill_in "password",		with: "1234"
+	fill_in "confirm_password",	with: "1234"
+	click_button "Create!"
+end
+
+When /^they sign up with spaces in the username "(.*?)"$/ do |space|
+	fill_in "email",		with: "123456@gmail.com"
+	fill_in "username",		with: space
+	fill_in "password",		with: "1234"
+	fill_in "confirm_password",	with: "1234"
+	click_button "Create!"
+end
+
+When /^they sign up with an email for the username "(.*?)"$/ do |email|
+	fill_in "email",		with: "123456@gmail.com"
+	fill_in "username",		with: email
+	fill_in "password",		with: "1234"
+	fill_in "confirm_password",	with: "1234"
+	click_button "Create!"
+end
+
+
 And /^try to create the user "(.*?)"$/ do |username|
 	fill_in "email",		with: "2@2.com"
 	fill_in "username",		with: username
@@ -106,6 +139,10 @@ end
 
 Then /^they should see the short password error "(.*?)"$/ do |short_error|
 	page.should have_content short_error
+end
+
+Then /^they should not be able to create the user$/ do
+	page.should have_content "Create a User"
 end
 
 #Success
