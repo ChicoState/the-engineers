@@ -1,126 +1,21 @@
 .content2
-  .design
-    .picture
-      %img{:src => "imgs/2.jpg"}/
-    .name
-      %h4
-        %a{:href => ""} Design1
-  .design
-    .picture
-      %img{:src => "imgs/2.jpg"}/
-    .name
-      %h4
-        %a{:href => ""} Design2
-  .design
-    .picture
-      %img{:src => "imgs/2.jpg"}/
-    .name
-      %h4
-        %a{:href => ""} Design3
-  .design
-    .picture
-      %img{:src => "imgs/2.jpg"}/
-    .name
-      %h4
-        %a{:href => ""} Design4
-  .design
-    .picture
-      %img{:src => "imgs/2.jpg"}/
-    .name
-      %h4
-        %a{:href => ""} Design5
-  .design
-    .picture
-      %img{:src => "imgs/2.jpg"}/
-    .name
-      %h4
-        %a{:href => ""} Design1
-  .design
-    .picture
-      %img{:src => "imgs/2.jpg"}/
-    .name
-      %h4
-        %a{:href => ""} Design2
-  .design
-    .picture
-      %img{:src => "imgs/2.jpg"}/
-    .name
-      %h4
-        %a{:href => ""} Design3
-  .design
-    .picture
-      %img{:src => "imgs/2.jpg"}/
-    .name
-      %h4
-        %a{:href => ""} Design4
-  .design
-    .picture
-      %img{:src => "imgs/2.jpg"}/
-    .name
-      %h4
-        %a{:href => ""} Design5
-  .design
-    .picture
-      %img{:src => "imgs/2.jpg"}/
-    .name
-      %h4
-        %a{:href => ""} Design1
-  .design
-    .picture
-      %img{:src => "imgs/2.jpg"}/
-    .name
-      %h4
-        %a{:href => ""} Design2
-  .design
-    .picture
-      %img{:src => "imgs/2.jpg"}/
-    .name
-      %h4
-        %a{:href => ""} Design3
-  .design
-    .picture
-      %img{:src => "imgs/2.jpg"}/
-    .name
-      %h4
-        %a{:href => ""} Design4
-  .design
-    .picture
-      %img{:src => "imgs/2.jpg"}/
-    .name
-      %h4
-        %a{:href => ""} Design5
-  .design
-    .picture
-      %img{:src => "imgs/2.jpg"}/
-    .name
-      %h4
-        %a{:href => ""} Design1
-  .design
-    .picture
-      %img{:src => "imgs/2.jpg"}/
-    .name
-      %h4
-        %a{:href => ""} Design2
-  .design
-    .picture
-      %img{:src => "imgs/2.jpg"}/
-    .name
-      %h4
-        %a{:href => ""} Design3
-  .design
-    .picture
-      %img{:src => "imgs/2.jpg"}/
-    .name
-      %h4
-        %a{:href => ""} Design4
+  - @designs.each do |design|
+    .design
+      .picture
+        %img{:src => design.imagefilepath}
+      .name
+        %h4
+          %a{:href => design_path(design.id)}
+            = design.title
 .content1
-  %h2 User
-  %img{:src => "imgs/1.jpg"}/
+  %h2
+    = @view_user.username
+  %img{:src => "imgs/1.jpg"}
   .print
     %ul
-      %input{:type => "button", :value => "Info"}/
+      %input{:type => "button", :value => "Info"}
       %select.settings
         %option{:value => "1"} Settings
         = succeed "Settings3" do
           %option{:value => "2"} Settings2
-      %input{:type => "button", :value => "Licenses"}/
+      %input{:type => "button", :value => "Licenses"}

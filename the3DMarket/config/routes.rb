@@ -18,12 +18,12 @@ Rails.application.routes.draw do
   post 'u/try_create' => 'user#try_create'
   ## Settings
   #get 'u/view' => 'user#index'
-  ## Show
-  get 'u/:id' => 'user#show'
   ## Login
   get 'login' => 'user#login'
   post 'logout' => 'user#logout'
   post 'try_login' => 'user#try_login'
+  ## Show
+  get 'u/:id' => 'user#show', as: 'user'
   
   # Design Controller
   ## Upload

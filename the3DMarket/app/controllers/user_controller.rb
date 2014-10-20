@@ -6,10 +6,15 @@ class UserController < ApplicationController
   
   # User Show page
   def show
+    if !@user.present?
+      redirect_to(login_path) and return
+    else
+      @view_user = User.find(params[:id])
+      @designs = Design.where(:user_id => params[:id])
+    end
   end
   # User Sign Up page
   def create
-    
   end
   def try_create
     if params[:username].present?
