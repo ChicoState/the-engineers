@@ -1,0 +1,103 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_self
+ */
+ 
+*
+  margin: 0
+  padding: 0
+
+html, body
+  height: 100%
+  
+#page_wrapper
+  min-height: 100%
+  position: relative
+
+ul
+  list-style: none
+
+a
+  text-decoration: none
+
+.clear
+  clear: both
+
+.container
+  width: 1024px
+  margin: 0 auto
+  padding-bottom: 80px
+
+.heading_bar
+  list-style-type: none
+  margin: 0
+  padding: 5px
+  background-color: rgb(204,204,204)
+  color: rgb(7,55,99)
+  li
+    display: inline
+    
+    .logo
+      width: 150px
+      height: 30px
+    
+    .search
+      display: inline-block
+      input
+        width: 100px
+
+.content
+  width: 1024px
+  height: 600px
+  border: gray 1px solid
+  .page_title
+    text-align: center
+    padding-top: 20px
+  h2, img
+    float: left
+    margin: 30px 0 0 30%
+  h2
+    font-size: 30px
+    font-weight: 900
+    color: #191970
+  img
+    width: 300px
+    height: 300px
+    border: gray 1px solid
+  input[type=button]
+    width: 110px
+    height: 30px
+    padding-left: 15px
+    margin-left: 50px
+    background: #B0E0E6
+    color: #003371
+    font-weight: bold
+    
+footer
+  width: 100%
+  height: 70px
+  padding: 5px
+  position: absolute
+  bottom: 0
+  left: 0
+  text-align: center
+  background-color: rgb(204,204,204)
+  color: rgb(7,55,99)
+  ul
+    list-style-type: none
+    display: inline
+    li
+      display: inline
+  .logo
+    width: 150px
+    height: 30px
