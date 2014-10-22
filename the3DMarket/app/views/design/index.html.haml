@@ -1,0 +1,13 @@
+.content
+  %h1.page_title
+    Library
+  .design_container
+    - @designs.each do |design| 
+      .design
+        .picture
+          %img{:src => design.imagefilepath}
+        .name
+          %h4
+            %a{:href => design_path(design.id)}
+              = design.title
+

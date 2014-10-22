@@ -1,0 +1,21 @@
+.content2
+  - @designs.each do |design|
+    .design
+      .picture
+        %img{:src => design.imagefilepath}
+      .name
+        %h4
+          %a{:href => design_path(design.id)}
+            = design.title
+.content1
+  %h2
+    = @view_user.username
+  %img{:src => "imgs/1.jpg"}
+  .print
+    %ul
+      %input{:type => "button", :value => "Info"}
+      %select.settings
+        %option{:value => "1"} Settings
+        = succeed "Settings3" do
+          %option{:value => "2"} Settings2
+      %input{:type => "button", :value => "Licenses"}

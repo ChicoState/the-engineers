@@ -11,7 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140921032240) do
+ActiveRecord::Schema.define(version: 20141006141709) do
+
+  create_table "designs", force: true do |t|
+    t.string   "title"
+    t.string   "sdesc"
+    t.string   "filepath"
+    t.string   "imagefilepath"
+    t.integer  "user_id"
+    t.integer  "license_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "designs", ["license_id"], name: "index_designs_on_license_id", using: :btree
+  add_index "designs", ["user_id"], name: "index_designs_on_user_id", using: :btree
+
+  create_table "licenses", force: true do |t|
+    t.string   "title"
+    t.string   "sdesc"
+    t.string   "filepath"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "username"
