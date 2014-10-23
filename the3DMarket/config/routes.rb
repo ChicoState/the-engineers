@@ -13,8 +13,6 @@ Rails.application.routes.draw do
   #get 'a/search/:query' => 'author#search'
 
   # User Controller
-  ## Show
-  #get 'u/:id' => 'user#show'
   ## Sign Up
   get 'u/create' => 'user#create'
   post 'u/try_create' => 'user#try_create'
@@ -24,7 +22,9 @@ Rails.application.routes.draw do
   get 'login' => 'user#login'
   post 'logout' => 'user#logout'
   post 'try_login' => 'user#try_login'
-  
+  ## Show
+  get 'u/:id' => 'user#show'
+
   # Design Controller
   ## View
   #get 'd/:id' => 'design#show'
