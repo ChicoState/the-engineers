@@ -6,6 +6,7 @@ class UserController < ApplicationController
   
   # User Show page
   def show
+	  @user = User.find(params[:id])
   end
   # User Sign Up page
   def create
