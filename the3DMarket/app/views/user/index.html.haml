@@ -1,0 +1,20 @@
+%div.main
+  %div.heading
+    Profile Settings
+  %div.error
+    - if cookies[:error].present?
+      = cookies[:error]
+      - cookies[:error] = nil
+    %div.settings_box
+      = form_for @user, :url => {action: "try_index"} do
+        %div.content_row
+          %div.content_value
+            %input.email{:type=>"email", :name=>"email", :placeholder=>"email"}
+        %div.content_row
+          %div.content_value
+            %input.password{:type=>"password", :name=>"password", :placeholder=>"password"}
+        %div.content_row
+          %div.content_value
+            %input.password{:type=>"password", :name=>"conf_password", :placeholder=>"confirm_password"}
+        %div.buttons 
+          %input{"type"=>"submit", "value"=>"Save Changes!"}

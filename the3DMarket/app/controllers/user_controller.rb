@@ -50,6 +50,32 @@ class UserController < ApplicationController
   end
   # User Settings page
   def index
+	  @user = User.find(params[:id])
+  end
+  def try_index
+	  @user = User.find(params[:id])
+
+	  if params[:email].present? == false
+		  cookies[:error] = "Email cannot be blank"
+		  redirect_to(index_path(@user))and return
+	  end
+	  if User.find_by_email(params[:email]).present?
+		  cookies[:error] = "That email has already been linked to an account"
+		  redirect_to(index_path(@user))and return
+	  end
+	  if params[:password] != params[:conf_password]
+		  cookies[:error] = "Your passwords don't match"
+		  redirect_to(index_path(@user))and return
+	  end
+	  if params[:password].length < 4
+		  cookies[:error] = "That password is too short"
+		  redirect_to(index_path(@user))and return	
+	  end
+
+	  @user.email = params[:email]
+	  @user.hash_pass = PasswordHash.createHash(params[:password])
+	  @user.save()
+	  redirect_to(user_path(@user))
   end
   # User login page
   def login
