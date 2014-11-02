@@ -1,19 +1,28 @@
-.content
+.container
   %h2
     = @design.title
-  .clear
-  %img{:src => @design.imagefilepath}
-  %select.controls
-    %option{:value => "1"} Controls
-    %option{:value => "2"} Controls2
-    %option{:value => "3"} Controls3
-  .clear
-  .print
-    %input{:type => "button", :value => "Print"}
-    %select.settings
-      %option{:value => "1"} Settings
-      %option{:value => "2"} Settings2
-      %option{:value => "3"} Settings3
-    -# Download path is @design.filepath
-    %input{:type => "button", :value => "Download"}
-    %input{:type => "button", :value => "License"}
+  .row
+    .col-md-6.col-md-push-3
+      %img.design-image{:src => @design.imagefilepath}
+  .row
+    .col-md-4.col-md-push-2
+      .form-group
+        %select.form-control.controls
+          %option{:value => "1"} Controls
+          %option{:value => "2"} Controls2
+          %option{:value => "3"} Controls3
+      .form-group.print
+        %input.form-control{:type => "button", :value => "Print"}
+    .col-md-4.col-md-push-2
+      .form-group
+        %select.form-control.settings
+          %option{:value => "1"} Settings
+          %option{:value => "2"} Settings2
+          %option{:value => "3"} Settings3
+        -# Download path is @design.filepath
+      .form-group
+        %button.form-control.btn.btn-primary
+          Download
+      .form-group
+        %button.form-control.btn.btn-default
+          License

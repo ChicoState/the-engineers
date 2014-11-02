@@ -48,7 +48,7 @@ class UserController < ApplicationController
       #Fix This
       redirect_to(login_path)
     else
-      cookies[:error] = "There was an error submitting, try again"
+      cookies[:error] = "There was an error, please resubmit the form."
       redirect_to(u_create_path)
     end
   end
@@ -68,10 +68,10 @@ class UserController < ApplicationController
         #Login cookie expires after an hour.
         cookies[:user] = {:value => @user.id.to_s, :expires => Time.now + 3600}
       else
-        cookies[:error] = "A user with that password was not found"
+        cookies[:error] = "The username or password specified was incorrect."
       end
     else
-      cookies[:error] = "A user with that password was not found"
+      cookies[:error] = "The username or password specified was incorrect."
     end
     @user = nil
     redirect_to(login_path)
