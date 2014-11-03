@@ -40,7 +40,7 @@ class DesignController < ApplicationController
     end
     
     stl_saved_file = File.new(Rails.public_path.to_s + cur_design.filepath,"w")
-    stl_saved_file.write(params[:stl_file].read)
+    stl_saved_file.write(params[:stl_file].read.force_encoding("UTF-8"))
     # Fix Permissions
     stl_saved_file.chmod(0666)
     stl_saved_file.close
