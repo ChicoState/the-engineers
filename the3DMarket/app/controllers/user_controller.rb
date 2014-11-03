@@ -55,7 +55,7 @@ class UserController < ApplicationController
   # User Settings page
   def index
     #@design = Design.find(params[:id])
-    @design = Design.find(1)
+    @design = Design.find(37)
   end
   # User login page
   def login

@@ -11,8 +11,8 @@
 
   function init () {
       //Camera settings.                FOV vv  aspect ratio, camera frustum
-      camera = new THREE.PerspectiveCamera(35, 640 / 480, 1, 15);
-      camera.position.set(3, 0.15, 3);
+      camera = new THREE.PerspectiveCamera(55, 640 / 480, 1, 15);
+      camera.position.set(3, 0.15, 10);
       cameraTarget = new THREE.Vector3(0, -0.25, 0);
       scene = new THREE.Scene();
       scene.fog = new THREE.Fog(0x72645b, 2, 15);
@@ -25,7 +25,8 @@
       }));
       plane.rotation.x = -Math.PI / 2;
       plane.position.y = -0.5;
-      scene.add(plane);
+      //scene.add(plane);
+      // Add Shadows
       plane.receiveShadow = true;
       //stuff I don't understand.
       var loader = new THREE.STLLoader();
@@ -34,17 +35,18 @@
           //set up STL material stuff
           //Add some attributes (color, etc)
           var material = new THREE.MeshPhongMaterial({
-              ambient: 0xff5533,
-              color: 0xff5533,
+              ambient: 0x99BB99,
+              //color: 0x779977,
+              color: 0xFF0000,
               specular: 0x111111,
               shininess: 10
           });
           //ambient is the diffraction lighting, color is fill color, specular is reflection shading, and shininess is amount of reflection
           var mesh = new THREE.Mesh(geometry, material);
           //this affects the position, size, and rotation of the STL model.  Changethese as you see fit to make the scene look good
-          mesh.position.set(0, -0.25, 0.6);
+          mesh.position.set(0, -0.25, 0);
           mesh.rotation.set(0, -Math.PI / 2, 0);
-          mesh.scale.set(0.5, 0.5, 0.5);
+          mesh.scale.set(0.001, 0.001, 0.001);
           mesh.castShadow = true;
           mesh.receiveShadow = true;
           scene.add(mesh);
@@ -69,20 +71,6 @@
           mesh.receiveShadow = true;
           scene.add(mesh);
       });
-      //loading a new STL object
-      loader.load('./models/stl/binary/pr2_head_pan.stl');
-      var loader = new THREE.STLLoader();
-      loader.addEventListener('load', function(event) {
-          var geometry = event.content;
-          var mesh = new THREE.Mesh(geometry, material);
-          mesh.position.set(0.136, -0.37, -0.6);
-          mesh.rotation.set(-Math.PI / 2, 0.3, 0);
-          mesh.scale.set(2, 2, 2);
-          mesh.castShadow = true;
-          mesh.receiveShadow = true;
-          scene.add(mesh);
-      });
-      loader.load('./models/stl/binary/pr2_head_tilt.stl');
       // Lights
       //this defines the ambient lighting (think bright sky)
       scene.add(new THREE.AmbientLight(0x404040));
