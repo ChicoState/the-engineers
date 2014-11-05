@@ -17,7 +17,8 @@ Rails.application.routes.draw do
   get 'u/create' => 'user#create'
   post 'u/try_create' => 'user#try_create'
   ## Settings
-  #get 'u/view' => 'user#index'
+  get 'u/view' => 'user#index'
+  post 'try_index' => 'user#try_index'
   ## Login
   get 'login' => 'user#login'
   post 'logout' => 'user#logout'

@@ -1,0 +1,17 @@
+.container
+  .settings_box.col-md-4.col-md-push-4
+    - if cookies[:error].present?
+      .error
+        = cookies[:error]
+        - cookies[:error] = nil
+    %h2
+      Profile Settings
+    = form_for @user, :url => {action: "try_index"} do
+      .form-group
+        %input.form-control.email{:type => "email", :name => "email", :placeholder => "Email"}
+      .form-group
+        %input.form-control.password{:type => "password", :name => "password", :placeholder => "Password"}
+      .form-group
+        %input.form-control.password{:type => "password", :name => "Confirm Password", :placeholder => "confirm_password"}
+      .form-group
+        %input.form-control.btn.btn-primary{:type => "submit", :value => "Save"}
