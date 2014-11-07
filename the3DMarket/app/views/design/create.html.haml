@@ -1,13 +1,19 @@
-= form_tag '/d/try_create', { :multipart => true } do
-  %p
-    %input{:type =>"text", :name =>"title", :placeholder =>"Design Title"}
-  %p
-    %textarea{:name =>"sdesc", :placeholder =>"Design Short Description"}
-  %p
-    STL file
-    = file_field_tag 'stl_file'
-  %p
-    Image file
-    = file_field_tag 'image_file'
-  %p
-    = submit_tag "Upload"
+.container
+  .col-md-4.col-md-push-4
+    %h2
+      Create design
+    = form_tag '/d/try_create', { :multipart => true } do
+      .form-group
+        %input.form-control{:type => "text", :name => "title", :placeholder => "Design title"}
+      .form-group
+        %textarea.form-control{:name => "sdesc", :placeholder => "Short description of your design"}
+      .form-group
+        %label
+          STL file
+        = file_field_tag 'stl_file'
+      .form-group
+        %label
+          Image file
+        = file_field_tag 'image_file'
+      .form-group
+        = submit_tag "Upload", :class => ["form-control", "btn", "btn-default"]
