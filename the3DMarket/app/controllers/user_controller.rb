@@ -3,7 +3,9 @@ require 'PasswordHash'
 class UserController < ApplicationController
   include PasswordHash
   #protect_from_forgery with: :exception
-  
+  def browse
+    redirect_to(d_view_all_path) and return
+  end
   # User Show page
   def show
     if !@user.present?

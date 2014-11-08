@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   # User Controller
   ## Sign Up
+  get 'u/browse' => 'user#browse'
   get 'u/create' => 'user#create'
   post 'u/try_create' => 'user#try_create'
   ## Settings
