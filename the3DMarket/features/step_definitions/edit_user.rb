@@ -75,6 +75,6 @@ Then /^they should see another password error "([^"]*)"$/ do |another_password_e
 end
 
 #Success
-Then /^they should be redirected to their user account page$/ do
-	page.should have_content "test"
+Then /^they should be redirected to the login page$/ do
+	page.should have_content ("Login" || "You're already logged in as ")
 end

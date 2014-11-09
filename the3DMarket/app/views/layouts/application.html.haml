@@ -1,43 +1,54 @@
--# HTML 5 meta tag
 !!! 5
 %html
   %head
     %title
       The3DMarket
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = stylesheet_link_tag    params[:controller]
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    %header
-    %ul.heading_bar
-      %li
-        %logo
-          %img(src="http://www.placekitten.com/100/30")
-      %li
-        Browse
-      %li
-        Create
-      %li
-        Upload
-      %li
-        %div.search
-          %input
-      %li
-        Join/Sign In
+    %nav.navbar.navbar-default.navbar-fixed-top{ :role => "navigation" }
+      .container
+        %ul.nav.navbar-nav
+          %li
+            %a.navbar-brand{:href => '/'}
+              3DEx
+          %li
+            %a{:href => '/u/browse'}
+              Browse
+          %li
+            %a{:href => '/u/create'}
+              Create
+          %li
+            %a
+              Upload
+        %ul.nav.navbar-nav.navbar-right
+          %li.dropdown
+            %a.dropdown-toggle{ :"data-toggle" => "dropdown", :href => '/login'}
+              Login
+              %span.caret
+            %ul.dropdown-menu.login-dropdown
+              .form-group
+                %input.form-control{:type => "text", :placeholder => "Username"}/
+              .form-group
+                %input.form-control{:type => "password", :placeholder => "Password"}/
+              .form-group
+                %button.btn.btn-default{:type => "submit"}
+                  Submit
+
+  .main-content
     = yield
-    %footer
-    %logo
-    %ul
-      %li
-        %ul
-          %li.header
-            About Us
-          %li
-      %li
-        %ul
-          %li
-            Contact Us
-      %li
-        %ul
-          %li
-            Stuff
+
+  %footer.navbar.navbar-inverse
+    .container
+      %ul.navbar-nav.nav
+        %li
+          %a{:href => '/about'}
+            About
+        %li
+          %a
+            Contact
+        %li
+          %a
+            Legal

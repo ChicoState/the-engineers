@@ -3,7 +3,7 @@ Feature: Signing up
 	Scenario: Unsuccessful Sign up
 		Given a user visits the Signup page "/u/create"
 		When they sign up with no username
-		Then they should see the user error "There was an error submitting, try again"
+		Then they should see the user error "There was an error, please resubmit the form."
 
 		Given a user visits the Signup page "/u/create"
 		When they sign up with passwords of different lengths

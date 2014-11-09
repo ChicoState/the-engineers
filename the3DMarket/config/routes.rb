@@ -7,13 +7,14 @@ Rails.application.routes.draw do
   #get 'about' => 'main#about'
   
   # Author Controller
-  ## View
-  #get 'a/:id' => 'author#show'
   ## Search
   #get 'a/search/:query' => 'author#search'
+  ## Show
+  #get 'a/:id' => 'author#show'
 
   # User Controller
   ## Sign Up
+  get 'u/browse' => 'user#browse'
   get 'u/create' => 'user#create'
   post 'u/try_create' => 'user#try_create'
   ## Login
@@ -27,17 +28,15 @@ Rails.application.routes.draw do
   patch 'u/:id/try_view' => 'user#try_index', as: :try_index
 
   # Design Controller
-  ## View
-  #get 'd/:id' => 'design#show'
   ## Upload
-  #get 'd/create' => 'design#create'
+  get 'd/create' => 'design#create'
+  post 'd/try_create' => 'design#try_create'
   ## Search
   #get 'd/search/:query' => 'design#search'
   ## View All
-  #get 'd/view-all' => 'design#index'
-  
-  #get 'login' => 'login#login'
-  
+  get 'd/view-all' => 'design#index'
+  ## Show
+  get 'd/:id' => 'design#show', as: 'design'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

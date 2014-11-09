@@ -33,6 +33,6 @@ Feature: Edit a user
 
 		Given a user wants to edit his information at "/u/1/view"
 		When they edit with a valid email, password, and confirmation password
-		Then they should be redirected to their user account page
+		Then they should be redirected to the login page
 
 

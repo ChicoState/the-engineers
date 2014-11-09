@@ -1,14 +1,28 @@
-%div.main
-  %div.content
-    =@user.username
-    %div.content_row
-      =gravatar_for @user
-    %div.content_row
-      %li
-        Info
-    %div.content_row
-      %li
-        Settings
-    %div.content_row
-      %li 
-        Licenses
+.container
+  .row
+    - @designs.each do |design|
+      .col-md-4
+        .thumbnail
+          %img{:src => design.imagefilepath}
+          .caption
+            %h2
+              %a{:href => design_path(design.id)}
+                = design.title
+            %p
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum incidunt maxime ducimus repudiandae molestias, quibusdam nostrum cumque minima numquam, eos quod aspernatur vel veritatis corrupti, recusandae beatae! Enim, magni, debitis.
+            %a.btn.btn-primary.btn-sm{:href => ""}
+              Purchase
+            %a.btn.btn-default.btn-sm{:href => design_path(design.id)}
+              Learn more
+  .row
+    %h2
+      = @view_user.username
+    %img{:src => "imgs/1.jpg"}
+    .print
+      %ul
+        %input{:type => "button", :value => "Info"}
+        %select.settings
+          %option{:value => "1"} Settings
+          = succeed "Settings3" do
+            %option{:value => "2"} Settings2
+        %input{:type => "button", :value => "Licenses"}
