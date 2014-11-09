@@ -11,6 +11,7 @@
  * file per style scope.
  *
  *= require_self
+ *= require "../components/bootstrap/dist/css/bootstrap.min.css"
  */
  
 *
@@ -24,6 +25,9 @@ html, body
   min-height: 100%
   position: relative
 
+.main-content
+  padding-top: 70px
+
 ul
   list-style: none
 
@@ -32,11 +36,6 @@ a
 
 .clear
   clear: both
-
-.container
-  width: 1024px
-  margin: 0 auto
-  padding-bottom: 80px
 
 .heading_bar
   list-style-type: none
@@ -56,33 +55,6 @@ a
       input
         width: 100px
 
-.content
-  width: 1024px
-  height: 600px
-  border: gray 1px solid
-  .page_title
-    text-align: center
-    padding-top: 20px
-  h2, img
-    float: left
-    margin: 30px 0 0 30%
-  h2
-    font-size: 30px
-    font-weight: 900
-    color: #191970
-  img
-    width: 300px
-    height: 300px
-    border: gray 1px solid
-  input[type=button]
-    width: 110px
-    height: 30px
-    padding-left: 15px
-    margin-left: 50px
-    background: #B0E0E6
-    color: #003371
-    font-weight: bold
-    
 footer
   width: 100%
   height: 70px

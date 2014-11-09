@@ -2,6 +2,13 @@ require 'fileutils'
 
 class DesignController < ApplicationController
   # Design View page
+  def browse
+    if params[:id].nil? # Handle 
+      redirect_to d_view_all_path
+    else
+      @design = Design.find(params[:id])
+    end
+  end
   def show
     if params[:id].nil? # Handle 
       redirect_to d_view_all_path

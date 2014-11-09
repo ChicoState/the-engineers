@@ -14,10 +14,12 @@ Rails.application.routes.draw do
 
   # User Controller
   ## Sign Up
+  get 'u/browse' => 'user#browse'
   get 'u/create' => 'user#create'
   post 'u/try_create' => 'user#try_create'
   ## Settings
   get 'u/view' => 'user#index'
+  patch 'try_index' => 'user#try_index'
   ## Login
   get 'login' => 'user#login'
   post 'logout' => 'user#logout'

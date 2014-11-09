@@ -1,24 +1,19 @@
-%div.main
-  %div.create_box
-    = form_tag(action: "try_create",class: "create_user_form") do
-      %div.heading
+.container
+  .col-md-4.col-md-push-4
+    = form_tag(action: "try_create") do
+      %h2
         Create a User
-      %div.error
-        - if cookies[:error].present?
+      - if cookies[:error].present?
+        %div.error.alert.alert-danger
           = cookies[:error]
           - cookies[:error] = nil
-      %div.content
-        %div.content_row
-          %div.content_value
-            %input.email{:type =>"email", :name =>"email", :placeholder =>"email"}
-        %div.content_row
-          %div.content_value
-            %input.username{:type =>"text", :name =>"username", :placeholder =>"username"}
-        %div.content_row
-          %div.content_value
-            %input.password{:type =>"password", :name =>"password",:placeholder =>"password"}
-        %div.content_row
-          %div.content_value
-            %input.password{:type =>"password", :name =>"conf_password",:placeholder =>"confirm_password"}
-      %div.buttons
-        %input{"type"=>"submit", "value"=>"Create!"}
+      .form-group
+        %input.form-control.email{:type =>"email", :name =>"email", :placeholder =>"Email"}
+      .form-group
+        %input.form-control.username{:type =>"text", :name =>"username", :placeholder =>"Username"}
+      .form-group
+        %input.form-control.password{:type =>"password", :name =>"password",:placeholder =>"Password"}
+      .form-group
+        %input.form-control.password{:type =>"password", :name =>"conf_password",:placeholder =>"Confirm Password"}
+      .form-group
+        %input.form-control.btn.btn-primary{ :type =>"submit", :value =>"Create!"}
