@@ -3,7 +3,8 @@
     = @design.title
   .row
     .col-md-6.col-md-push-3
-      %img.design-image{:src => @design.imagefilepath}
+      .design-image.stl-scene{:file_path => @design.filepath}
+      -# %img.design-image{:src => @design.imagefilepath}
   .row
     .col-md-4.col-md-push-2
       .form-group
@@ -26,3 +27,11 @@
       .form-group
         %button.form-control.btn.btn-default
           License
+:javascript
+  $(document).ready(function(){
+    if (!Detector.webgl) Detector.addGetWebGLMessage();
+    var container, stats;
+    var camera, cameraTarget, scene, renderer;
+    init();
+    animate();
+  });
