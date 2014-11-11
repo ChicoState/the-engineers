@@ -69,6 +69,31 @@ class DesignController < ApplicationController
   end
   # Design Search page
   def search
+    added = false
+    query_string = ""
+    conditions = {}
+    if params[:title].present?
+      conditions[:title] = '%' + params[:title] + '%'
+      query_string = "title LIKE :title"
+      added = true
+    end
+    #puts "XXXXXXXXXXXXXX DATE XXXXXXXXXXXXXXXXXX"
+    #puts params[:date]
+    if params[:date].present?
+      conditions[:created_at] = params[:date]
+      query_string += " AND " if added
+      query_string += "created_at LIKE :created_at"
+    end
+    
+    @designs = Design.where(query_string, conditions).to_a
+    
+    if params[:author].present?
+      @designs.keep_if do |design|
+        (design.user.username =~ Regexp.new(params[:author])).present?
+      end
+    end
+    
+    render 'index'
   end
   # Design View All page
   def index

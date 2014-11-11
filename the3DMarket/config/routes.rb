@@ -32,7 +32,7 @@ Rails.application.routes.draw do
   get 'd/create' => 'design#create'
   post 'd/try_create' => 'design#try_create'
   ## Search
-  #get 'd/search/:query' => 'design#search'
+  get 'd/search' => 'design#search', as: 'search'
   ## View All
   get 'd/view-all' => 'design#index'
   ## Show
