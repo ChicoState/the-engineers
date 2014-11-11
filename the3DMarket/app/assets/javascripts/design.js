@@ -80,7 +80,7 @@ function init () {
   renderer.shadowMapCullFace = THREE.CullFaceBack;
   $('.stl-scene').append(renderer.domElement);
   // stats  -- here's where we see the framerate counter.
-  //Comment this section to disable that feature.
+  //Comment this section to disable that feature. Also check animate function
   /*
   stats = new Stats();
   stats.domElement.style.position = 'relative';
@@ -119,7 +119,7 @@ function onWindowResize() {
 function animate() {
   requestAnimationFrame(animate);
   render();
-  stats.update();
+  //stats.update();
 }
 
 function render() {
