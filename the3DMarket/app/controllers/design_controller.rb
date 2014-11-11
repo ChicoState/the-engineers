@@ -2,6 +2,13 @@ require 'fileutils'
 
 class DesignController < ApplicationController
   # Design View page
+  def browse
+    if params[:id].nil? # Handle 
+      redirect_to d_view_all_path
+    else
+      @design = Design.find(params[:id])
+    end
+  end
   def show
     if params[:id].nil? # Handle 
       redirect_to d_view_all_path
@@ -53,11 +60,39 @@ class DesignController < ApplicationController
     
     redirect_to d_view_all_path and return
   end
+  def upload
+    if params[:id].nil? # Handle 
+      redirect_to d_create_path
+    else
+      @design = Design.find(params[:id])
+    end
+  end
   # Design Search page
   def search
   end
   # Design View All page
   def index
     @designs = Design.first(10)
+  end
+  def about
+    if params[:id].nil? # Handle 
+      redirect_to about_path
+    else
+      @design = Design.find(params[:id])
+    end
+  end
+  def contact
+    if params[:id].nil? # Handle 
+      redirect_to contact_path
+    else
+      @design = Design.find(params[:id])
+    end
+  end
+  def legal
+    if params[:id].nil? # Handle 
+      redirect_to legal_path
+    else
+      @design = Design.find(params[:id])
+    end
   end
 end
