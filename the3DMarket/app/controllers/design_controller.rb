@@ -14,6 +14,9 @@ class DesignController < ApplicationController
       redirect_to d_view_all_path
     else
       @design = Design.find(params[:id])
+      if @user.present?
+        @bookmarked = Bookmark.find_by_user_id_and_design_id(@user.id,@design.id).present?
+      end
     end
   end
   # Design Upload page
@@ -119,5 +122,26 @@ class DesignController < ApplicationController
     else
       @design = Design.find(params[:id])
     end
+  end
+  # Bookmark File
+  def try_bookmark
+    if !@user.present?
+      cookies[:error] = "You must be logged in to do that"
+      redirect_to(login_path) and return
+    end
+    d_id = params[:design_id];
+    
+    bookmark = Bookmark.new({
+                              :user_id => @user.id,
+                              :design_id => d_id
+                           })
+    if Design.find(d_id).nil?
+      cookies[:error] = "That design doesn't exist"  
+    elsif Bookmark.find_by_user_id_and_design_id(@user.id,d_id).nil?
+      bookmark.save
+      cookies[:success] = "Files successfully uploaded"  
+      redirect_to design_path(d_id) and return
+    end
+    redirect_to d_view_all_path
   end
 end

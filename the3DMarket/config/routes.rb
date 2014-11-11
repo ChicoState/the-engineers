@@ -35,6 +35,8 @@ Rails.application.routes.draw do
   get 'd/search' => 'design#search', as: 'search'
   ## View All
   get 'd/view-all' => 'design#index'
+  ## Add A Bookmark
+  post 'd/bookmark' => 'design#try_bookmark'
   ## Show
   get 'd/:id' => 'design#show', as: 'design'
   ## About
@@ -43,4 +45,5 @@ Rails.application.routes.draw do
   get 'contact' => 'design#contact'
   ## Legal
   get 'legal' => 'design#legal'
+  
 end

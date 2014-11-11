@@ -161,6 +161,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   cucumber-rails (= 1.4.0)
   database_cleaner
+  gherkin
   haml
   jbuilder (~> 2.0)
   jquery-rails

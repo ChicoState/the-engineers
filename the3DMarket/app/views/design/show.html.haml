@@ -27,6 +27,13 @@
       .form-group
         %button.form-control.btn.btn-default
           License
+      .form-group
+        - if @bookmarked
+          %button.form-control.btn.btn-default.bookmark-design{disabled: "disabled"}
+            Bookmarked
+        - else
+          %button.form-control.btn.btn-default.bookmark-design
+            Bookmark 
 :javascript
   $(document).ready(function(){
     if (!Detector.webgl) Detector.addGetWebGLMessage();
@@ -34,4 +41,18 @@
     var camera, cameraTarget, scene, renderer;
     init();
     animate();
+    bind_bookmark_button();
   });
+  function bind_bookmark_button () {
+    $('button.bookmark-design').click(function(){
+      $.ajax({
+        type: 'POST',
+        url: '#{d_bookmark_path}',
+        data: { design_id: '#{@design.id}'}
+      })
+      .done(function() {
+        $('button.bookmark-design').html('Bookmarked');
+        $('button.bookmark-design').prop('disabled',true);
+      });
+    });
+  }
