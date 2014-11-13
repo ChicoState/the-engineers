@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .content
   %h2 Design1
   .clear
@@ -15,3 +16,33 @@
       %option{:value => "3"} Settings3
     %input{:type => "button", :value => "Download"}/
     %input{:type => "button", :value => "License"}/
+=======
+.container
+  %h2
+    = @design.title
+  .row
+    .col-md-6.col-md-push-3
+      %img.design-image{:src => @design.imagefilepath}
+  .row
+    .col-md-4.col-md-push-2
+      .form-group
+        %select.form-control.controls
+          %option{:value => "1"} Controls
+          %option{:value => "2"} Controls2
+          %option{:value => "3"} Controls3
+      .form-group.print
+        %input.form-control{:type => "button", :value => "Print"}
+    .col-md-4.col-md-push-2
+      .form-group
+        %select.form-control.settings
+          %option{:value => "1"} Settings
+          %option{:value => "2"} Settings2
+          %option{:value => "3"} Settings3
+        -# Download path is @design.filepath
+      .form-group
+        %button.form-control.btn.btn-primary
+          Download
+      .form-group
+        %button.form-control.btn.btn-default
+          License
+>>>>>>> e966eab4aa0b0e79ea70939a5bbe5fe1195c3e0b

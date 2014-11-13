@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .content
   .clear
   .usedesign
@@ -145,3 +146,23 @@
       .name
         %h4
           %a{:href => ""} Design3
+=======
+.container
+  %h1
+    Library
+  .row
+    - @designs.each do |design|
+      .col-md-4
+        .thumbnail
+          %img{:src => design.imagefilepath}
+          .caption
+            %h2
+              %a{:href => design_path(design.id)}
+                = design.title
+            %p
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum incidunt maxime ducimus repudiandae molestias, quibusdam nostrum cumque minima numquam, eos quod aspernatur vel veritatis corrupti, recusandae beatae! Enim, magni, debitis.
+            %a.btn.btn-primary.btn-sm{:href => ""}
+              Purchase
+            %a.btn.btn-default.btn-sm{:href => design_path(design.id)}
+              Learn more 
+>>>>>>> e966eab4aa0b0e79ea70939a5bbe5fe1195c3e0b

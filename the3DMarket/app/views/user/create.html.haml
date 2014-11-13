@@ -1,0 +1,19 @@
+.container
+  .col-md-4.col-md-push-4
+    = form_tag(action: "try_create") do
+      %h2
+        Create a User
+      - if cookies[:error].present?
+        %div.error.alert.alert-danger
+          = cookies[:error]
+          - cookies[:error] = nil
+      .form-group
+        %input.form-control.email{:type =>"email", :name =>"email", :placeholder =>"Email"}
+      .form-group
+        %input.form-control.username{:type =>"text", :name =>"username", :placeholder =>"Username"}
+      .form-group
+        %input.form-control.password{:type =>"password", :name =>"password",:placeholder =>"Password"}
+      .form-group
+        %input.form-control.password{:type =>"password", :name =>"conf_password",:placeholder =>"Confirm Password"}
+      .form-group
+        %input.form-control.btn.btn-primary{ :type =>"submit", :value =>"Create!"}
