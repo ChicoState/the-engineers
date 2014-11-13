@@ -18,8 +18,14 @@ Rails.application.routes.draw do
   get 'u/create' => 'user#create'
   post 'u/try_create' => 'user#try_create'
   ## Settings
+<<<<<<< HEAD
+  #get 'u/view' => 'user#index'
+  ## Show
+  get 'u/:id' => 'user#show'
+=======
   get 'u/view' => 'user#index'
   patch 'try_index' => 'user#try_index'
+>>>>>>> e966eab4aa0b0e79ea70939a5bbe5fe1195c3e0b
   ## Login
   get 'login' => 'user#login'
   post 'logout' => 'user#logout'
@@ -36,6 +42,10 @@ Rails.application.routes.draw do
   ## View All
   get 'd/view-all' => 'design#index'
   ## Show
+<<<<<<< HEAD
+  get 'd/:id' => 'design#show'  
+
+=======
   get 'd/:id' => 'design#show', as: 'design'
   ## About
   get 'about' => 'design#about'
@@ -43,6 +53,7 @@ Rails.application.routes.draw do
   get 'contact' => 'design#contact'
   ## Legal
   get 'legal' => 'design#legal'
+>>>>>>> e966eab4aa0b0e79ea70939a5bbe5fe1195c3e0b
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

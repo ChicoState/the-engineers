@@ -1,4 +1,19 @@
 .container
+<<<<<<< HEAD
+  .designs
+    - @designs.each do |design|
+      .design
+        .picture
+          %img{:src => design.imagefilepath}
+        .name
+          %h4
+            %a{:href => design_path(design.id)}
+              = design.title
+
+  .userBar
+    %h2
+      test
+=======
   .row
     - @designs.each do |design|
       .col-md-4
@@ -17,12 +32,18 @@
   .row
     %h2
       = @view_user.username
+>>>>>>> e966eab4aa0b0e79ea70939a5bbe5fe1195c3e0b
     %img{:src => "imgs/1.jpg"}
     .print
       %ul
         %input{:type => "button", :value => "Info"}
         %select.settings
           %option{:value => "1"} Settings
+<<<<<<< HEAD
+          %option{:value => "2"} Settings2
+          %option{:value => "3"} Settings3
+=======
           = succeed "Settings3" do
             %option{:value => "2"} Settings2
+>>>>>>> e966eab4aa0b0e79ea70939a5bbe5fe1195c3e0b
         %input{:type => "button", :value => "Licenses"}

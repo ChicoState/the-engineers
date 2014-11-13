@@ -8,12 +8,40 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
+<<<<<<< HEAD
+    %header
+    %ul.heading_bar
+      %li
+        %logo
+          %img(src="http://www.placekitten.com/100/30")
+      %li
+        Browse
+      %li
+        Create
+      %li
+        Upload
+      %li
+        %div.search
+          %input
+      %li
+        Join/Sign In
+    %div.container
+      = yield
+    %footer
+    %logo
+    %ul
+      %li
+        %ul
+          %li.header
+            About Us
+=======
     %nav.navbar.navbar-default.navbar-fixed-top{ :role => "navigation" }
       .container
         %ul.nav.navbar-nav
           %li
             %a.navbar-brand{:href => '/'}
               3DEx
+>>>>>>> e966eab4aa0b0e79ea70939a5bbe5fe1195c3e0b
           %li
             %a{:href => '/u/browse'}
               Browse
