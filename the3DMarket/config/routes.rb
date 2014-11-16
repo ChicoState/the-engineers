@@ -37,7 +37,12 @@ Rails.application.routes.draw do
   get 'd/view-all' => 'design#index'
   ## Show
   get 'd/:id' => 'design#show', as: 'design'
-
+  ## About
+  get 'about' => 'design#about'
+  ## Contact
+  get 'contact' => 'design#contact'
+  ## Legal
+  get 'legal' => 'design#legal'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

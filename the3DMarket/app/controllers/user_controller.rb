@@ -55,6 +55,10 @@ class UserController < ApplicationController
       redirect_to(u_create_path)
     end
   end
+  # User upload page
+  def upload
+    redirect_to(d_create_path) and return
+  end
   # User Settings page
   def index
 	  @user = User.find(params[:id])
@@ -137,5 +141,14 @@ class UserController < ApplicationController
     @user = nil
     cookies[:user] = nil
     redirect_to(login_path)
+  end
+  def about
+    redirect_to(about_path) and return
+  end
+  def contact
+    redirect_to(contact_path) and return
+  end
+  def legal
+    redirect_to(legal_path) and return
   end
 end
