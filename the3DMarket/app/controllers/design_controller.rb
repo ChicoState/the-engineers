@@ -100,7 +100,14 @@ class DesignController < ApplicationController
   end
   # Design View All page
   def index
-    @designs = Design.first(10)
+    @page_size = 5
+    if params[:offset].present? and params[:offset].to_i > 0
+      @current_offset = params[:offset].to_i
+      @designs = Design.order('created_at DESC').offset(@current_offset)
+    else
+      @designs = Design.first(@page_size)
+      @current_offset = 0
+    end
   end
   def about
     if params[:id].nil? # Handle 
