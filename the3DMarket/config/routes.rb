@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   get 'login' => 'user#login'
   post 'logout' => 'user#logout'
   post 'try_login' => 'user#try_login'
+  ## Show current user's library
+  get 'u/library' => 'user#library'
   ## Show
   get 'u/:id' => 'user#show', as: :user
   ## Settings

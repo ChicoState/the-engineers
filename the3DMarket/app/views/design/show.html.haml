@@ -30,10 +30,10 @@
       .form-group
         - if @bookmarked
           %button.form-control.btn.btn-default.bookmark-design{disabled: "disabled"}
-            Bookmarked
+            Purchased
         - else
           %button.form-control.btn.btn-default.bookmark-design
-            Bookmark 
+            Purchase 
 :javascript
   $(document).ready(function(){
     if (!Detector.webgl) Detector.addGetWebGLMessage();
@@ -51,7 +51,7 @@
         data: { design_id: '#{@design.id}'}
       })
       .done(function() {
-        $('button.bookmark-design').html('Bookmarked');
+        $('button.bookmark-design').html('Purchased');
         $('button.bookmark-design').prop('disabled',true);
       });
     });
