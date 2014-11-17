@@ -8,7 +8,7 @@ class UserController < ApplicationController
   end
   # User Show page
   def show
-	  #@user = User.find(params[:id])
+	  @user = User.find(params[:id])
     if !@user.present?
       redirect_to(login_path) and return
     else
