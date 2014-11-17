@@ -61,11 +61,17 @@ class UserController < ApplicationController
   end
   # User Settings page
   def index
-	  @user = User.find(params[:id])
+	  if !@user.present?
+      cookies[:error] = "You must be logged in to do that"
+      redirect_to(login_path) and return
+    end
   end
   def try_index
-	  @user = User.find(params[:id])
-
+    if !@user.present?
+      cookies[:error] = "You must be logged in to do that"
+      redirect_to(login_path) and return
+    end
+    
 	  if params[:email].present? == false
 		  cookies[:error] = "Email cannot be blank"
 		  redirect_to(index_path(@user))and return
