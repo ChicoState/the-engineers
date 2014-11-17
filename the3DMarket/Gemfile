@@ -18,6 +18,10 @@ gem 'coffee-rails', '~> 4.0.0'
 
 # Allow for the use of Haml files (instead of erb)
 gem 'haml'
+# For bootstrap
+gem 'bootstrap-sass'
+
+gem 'gherkin'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

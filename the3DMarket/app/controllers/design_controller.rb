@@ -14,6 +14,9 @@ class DesignController < ApplicationController
       redirect_to d_view_all_path
     else
       @design = Design.find(params[:id])
+      if @user.present?
+        @bookmarked = Bookmark.find_by_user_id_and_design_id(@user.id,@design.id).present?
+      end
     end
   end
   # Design Upload page
@@ -47,7 +50,7 @@ class DesignController < ApplicationController
     end
     
     stl_saved_file = File.new(Rails.public_path.to_s + cur_design.filepath,"w")
-    stl_saved_file.write(params[:stl_file].read)
+    stl_saved_file.write(params[:stl_file].read.force_encoding("UTF-8"))
     # Fix Permissions
     stl_saved_file.chmod(0666)
     stl_saved_file.close
@@ -69,6 +72,31 @@ class DesignController < ApplicationController
   end
   # Design Search page
   def search
+    added = false
+    query_string = ""
+    conditions = {}
+    if params[:title].present?
+      conditions[:title] = '%' + params[:title] + '%'
+      query_string = "title LIKE :title"
+      added = true
+    end
+    #puts "XXXXXXXXXXXXXX DATE XXXXXXXXXXXXXXXXXX"
+    #puts params[:date]
+    if params[:date].present?
+      conditions[:created_at] = params[:date]
+      query_string += " AND " if added
+      query_string += "created_at LIKE :created_at"
+    end
+    
+    @designs = Design.where(query_string, conditions).to_a
+    
+    if params[:author].present?
+      @designs.keep_if do |design|
+        (design.user.username =~ Regexp.new(params[:author])).present?
+      end
+    end
+    
+    render 'index'
   end
   # Design View All page
   def index
@@ -94,5 +122,26 @@ class DesignController < ApplicationController
     else
       @design = Design.find(params[:id])
     end
+  end
+  # Bookmark File
+  def try_bookmark
+    if !@user.present?
+      cookies[:error] = "You must be logged in to do that"
+      redirect_to(login_path) and return
+    end
+    d_id = params[:design_id];
+    
+    bookmark = Bookmark.new({
+                              :user_id => @user.id,
+                              :design_id => d_id
+                           })
+    if Design.find(d_id).nil?
+      cookies[:error] = "That design doesn't exist"  
+    elsif Bookmark.find_by_user_id_and_design_id(@user.id,d_id).nil?
+      bookmark.save
+      cookies[:success] = "Files successfully uploaded"  
+      redirect_to design_path(d_id) and return
+    end
+    redirect_to d_view_all_path
   end
 end
