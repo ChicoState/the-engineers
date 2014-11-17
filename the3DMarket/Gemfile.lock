@@ -28,6 +28,8 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
+    bootstrap-sass (3.3.0.1)
+      sass (~> 3.2)
     builder (3.2.2)
     capybara (2.1.0)
       mime-types (>= 1.16)
@@ -164,10 +166,12 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  bootstrap-sass
   capybara (= 2.1.0)
   coffee-rails (~> 4.0.0)
   cucumber-rails
   database_cleaner
+  gherkin
   haml
   jbuilder (~> 2.0)
   jquery-rails
