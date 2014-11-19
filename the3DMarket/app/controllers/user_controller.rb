@@ -112,6 +112,11 @@ class UserController < ApplicationController
     redirect_to(user_path(@user))
   end
 
+  # Show current user's library
+  def library
+    @bookmarks = @user.bookmarks
+  end
+
   # Logs out any user and deletes any session data and cookies.
   def logout
     @user = nil
