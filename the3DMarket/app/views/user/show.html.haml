@@ -1,23 +1,28 @@
 .container
-  .designs
+  .row
     - @designs.each do |design|
-      .design
-        .picture
+      .col-md-4
+        .thumbnail
           %img{:src => design.imagefilepath}
-        .name
-          %h4
-            %a{:href => design_path(design.id)}
-              = design.title
-
-  .userBar
+          .caption
+            %h2
+              %a{:href => design_path(design.id)}
+                = design.title
+            %p
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum incidunt maxime ducimus repudiandae molestias, quibusdam nostrum cumque minima numquam, eos quod aspernatur vel veritatis corrupti, recusandae beatae! Enim, magni, debitis.
+            %a.btn.btn-primary.btn-sm{:href => ""}
+              Purchase
+            %a.btn.btn-default.btn-sm{:href => design_path(design.id)}
+              Learn more
+  .row
     %h2
-      test
+      = @view_user.username
     %img{:src => "imgs/1.jpg"}
     .print
       %ul
         %input{:type => "button", :value => "Info"}
         %select.settings
           %option{:value => "1"} Settings
-          %option{:value => "2"} Settings2
-          %option{:value => "3"} Settings3
+          = succeed "Settings3" do
+            %option{:value => "2"} Settings2
         %input{:type => "button", :value => "Licenses"}
