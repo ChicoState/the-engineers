@@ -1,6 +1,6 @@
 .container
   %h1
-    Library
+    View All Designs
   .search_container
     = form_tag(search_path, method: "get", class: "search_form") do
       %h2
@@ -15,7 +15,7 @@
       %input.form-control.btn{:type => "reset", :value => "Clear"}
   .row
     - @designs.each do |design|
-      .col-md-4
+      .col-md-2
         .thumbnail
           %img{:src => design.imagefilepath}
           .caption
@@ -23,7 +23,7 @@
               %a{:href => design_path(design.id)}
                 = design.title
             %p
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum incidunt maxime ducimus repudiandae molestias, quibusdam nostrum cumque minima numquam, eos quod aspernatur vel veritatis corrupti, recusandae beatae! Enim, magni, debitis.
+              = design.sdesc
             %a.btn.btn-primary.btn-sm{:href => ""}
               Purchase
             %a.btn.btn-default.btn-sm{:href => design_path(design.id)}

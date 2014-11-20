@@ -24,19 +24,17 @@
           %li
             %a{:href => '/d/create'}
               Upload
+          - if @user
+            %li
+              %a{:href => '/u/library'}
+                My Library
         %ul.nav.navbar-nav.navbar-right
           %li.dropdown
-            %a.dropdown-toggle{ :"data-toggle" => "dropdown", :href => '/login'}
-              Login
-              %span.caret
-            %ul.dropdown-menu.login-dropdown
-              .form-group
-                %input.form-control{:type => "text", :placeholder => "Username"}/
-              .form-group
-                %input.form-control{:type => "password", :placeholder => "Password"}/
-              .form-group
-                %button.btn.btn-default{:type => "submit"}
-                  Submit
+            - if @user
+              = link_to 'Logout', logout_path, :method => :post
+            - else
+              %a.dropdown-toggle{ :"data-toggle" => "dropdown", :href => '/login'}
+                Login
 
   .main-content
     = yield
