@@ -3,7 +3,8 @@
     = @design.title
   .row
     .col-md-6.col-md-push-3
-      %img.design-image{:src => @design.imagefilepath}
+      .design-image.stl-scene{:file_path => @design.filepath}
+      -# %img.design-image{:src => @design.imagefilepath}
   .row
     .col-md-4.col-md-push-2
       .form-group
@@ -26,3 +27,32 @@
       .form-group
         %button.form-control.btn.btn-default
           License
+      .form-group
+        - if @bookmarked
+          %button.form-control.btn.btn-default.bookmark-design{disabled: "disabled"}
+            Bookmarked
+        - else
+          %button.form-control.btn.btn-default.bookmark-design
+            Bookmark 
+:javascript
+  $(document).ready(function(){
+    if (!Detector.webgl) Detector.addGetWebGLMessage();
+    var container, stats;
+    var camera, cameraTarget, scene, renderer;
+    init();
+    animate();
+    bind_bookmark_button();
+  });
+  function bind_bookmark_button () {
+    $('button.bookmark-design').click(function(){
+      $.ajax({
+        type: 'POST',
+        url: '#{d_bookmark_path}',
+        data: { design_id: '#{@design.id}'}
+      })
+      .done(function() {
+        $('button.bookmark-design').html('Bookmarked');
+        $('button.bookmark-design').prop('disabled',true);
+      });
+    });
+  }

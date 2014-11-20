@@ -49,7 +49,7 @@ class UserController < ApplicationController
       cookies[:user] = {:value => @user.id.to_s, :expires => Time.now + 3600}
       
       #Fix This
-      redirect_to(login_path)
+      redirect_to(user_path(@user.id))
     else
       cookies[:error] = "There was an error, please resubmit the form."
       redirect_to(u_create_path)
@@ -61,32 +61,8 @@ class UserController < ApplicationController
   end
   # User Settings page
   def index
-	  @user = User.find(params[:id])
-  end
-  def try_index
-	  @user = User.find(params[:id])
-
-	  if params[:email].present? == false
-		  cookies[:error] = "Email cannot be blank"
-		  redirect_to(index_path(@user))and return
-	  end
-	  if User.find_by_email(params[:email]).present?
-		  cookies[:error] = "That email has already been linked to an account"
-		  redirect_to(index_path(@user))and return
-	  end
-	  if params[:password] != params[:conf_password]
-		  cookies[:error] = "Your passwords don't match"
-		  redirect_to(index_path(@user))and return
-	  end
-	  if params[:password].length < 4
-		  cookies[:error] = "That password is too short"
-		  redirect_to(index_path(@user))and return	
-	  end
-
-	  @user.email = params[:email]
-	  @user.hash_pass = PasswordHash.createHash(params[:password])
-	  @user.save()
-	  redirect_to(user_path(@user))
+    #@design = Design.find(params[:id])
+    @design = Design.find(37)
   end
   # User login page
   def login
@@ -95,11 +71,12 @@ class UserController < ApplicationController
   def try_login
     @user = User.find_by_username(params[:username])
     if @user.present?
-      @user.last_log = Time.now
-      @user.save
       if PasswordHash.validatePassword(params[:password],@user.hash_pass)
         #Login cookie expires after an hour.
+        @user.last_log = Time.now
+        @user.save
         cookies[:user] = {:value => @user.id.to_s, :expires => Time.now + 3600}
+        redirect_to(user_path(@user.id)) and return
       else
         cookies[:error] = "The username or password specified was incorrect."
       end
