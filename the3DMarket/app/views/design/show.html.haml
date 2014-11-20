@@ -22,8 +22,8 @@
           %option{:value => "3"} Settings3
         -# Download path is @design.filepath
       .form-group
-        %button.form-control.btn.btn-primary
-          %a{:href => @design.filepath}
+        %form{:method => "get", :action => @design.filepath}
+          %button.form-control.btn.btn-primary{:type => "submit"}
             Download
       .form-group
         %button.form-control.btn.btn-default
