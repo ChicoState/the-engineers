@@ -22,10 +22,10 @@ class DesignController < ApplicationController
   # Design Upload page
   def create
     # Make sure user is logged in first
-    #if !@user.present?
-      #cookies[:error] = "You must be logged in to do that"
-      #redirect_to(login_path) and return
-    #end
+    if !@user.present?
+      cookies[:error] = "You must be logged in to do that"
+      redirect_to(login_path) and return
+    end
   end
   # Validate and upload the file
   def try_create
@@ -80,8 +80,7 @@ class DesignController < ApplicationController
       query_string = "title LIKE :title"
       added = true
     end
-    #puts "XXXXXXXXXXXXXX DATE XXXXXXXXXXXXXXXXXX"
-    #puts params[:date]
+    
     if params[:date].present?
       conditions[:created_at] = params[:date]
       query_string += " AND " if added
