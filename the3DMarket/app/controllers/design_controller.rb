@@ -80,8 +80,7 @@ class DesignController < ApplicationController
       query_string = "title LIKE :title"
       added = true
     end
-    #puts "XXXXXXXXXXXXXX DATE XXXXXXXXXXXXXXXXXX"
-    #puts params[:date]
+    
     if params[:date].present?
       conditions[:created_at] = params[:date]
       query_string += " AND " if added
