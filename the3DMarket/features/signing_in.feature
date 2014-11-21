@@ -1,7 +1,35 @@
 Feature: Signing in
 
 	Scenario: Unsuccessful Login
-		
+		Given a user visits the Login page
+		Then on the login page there should be the logo "3DEx"
+		And as user clicks on it they should be redirected to the home page
+
+		Given a user visits the Login page
+		Then on the login page there should be a link to Browse
+		And as user clicks on it they should be redirected to the view-all page
+
+		Given a user visits the Login page
+		Then on the login page there should be a link to Create
+		And as user clicks on it they should be redirected to the user create page
+
+		Given a user visits the Login page
+		Then on the login page there should be a link to Upload
+		And as user clicks on it they should be redirected to the login page
+
+		Given a user visits the Login page
+		Then on the login page there should be a link to Login
+		And as user clicks on it they should be redirected to the login page
+
+		Given a user visits the Login page
+		Then on the login page there should be a link to About
+
+		Given a user visits the Login page
+		Then on the login page there should be a link to Contact
+
+		Given a user visits the Login page
+		Then on the login page there should be a link to Legal	
+
 		Given a user visits the Login page
 		When they submit an email for the username
 		Then they should see an error message
@@ -33,4 +61,4 @@ Feature: Signing in
 	Scenario: Successful Login
 		Given a user visits the Login page
 		When they submit a user information that is in the database
-		Then they should see the logout page
+		Then they should see their user account

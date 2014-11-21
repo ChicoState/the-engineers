@@ -1,6 +1,36 @@
 Feature: Signing up
 
 	Scenario: Unsuccessful Sign up
+
+		Given a user visits the Signup page "/u/create"
+		Then on the Signup page there should be the logo "3DEx"
+		And user clicks on it they should be redirected to the home page
+
+		Given a user visits the Signup page "/u/create"
+		Then on the Signup page there should be a link to Browse
+		And user clicks on it they should be redirected to the view-all page
+
+		Given a user visits the Signup page "/u/create"
+		Then on the Signup page there should be a link to Create
+		And user clicks on it they should be redirected to the user create page
+
+		Given a user visits the Signup page "/u/create"
+		Then on the Signup page there should be a link to Upload
+		And user clicks on it they should be redirected to the login page
+
+		Given a user visits the Signup page "/u/create"
+		Then on the Signup page there should be a link to Login
+		And user clicks on it they should be redirected to the login page
+
+		Given a user visits the Signup page "/u/create"
+		Then on the Signup page there should be a link to About
+
+		Given a user visits the Signup page "/u/create"
+		Then on the Signup page there should be a link to Contact
+
+		Given a user visits the Signup page "/u/create"
+		Then on the Signup page there should be a link to Legal	
+
 		Given a user visits the Signup page "/u/create"
 		When they sign up with no username
 		Then they should see the user error "There was an error, please resubmit the form."
