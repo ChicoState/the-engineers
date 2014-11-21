@@ -24,8 +24,8 @@ Rails.application.routes.draw do
   ## Show current user's library
   get 'u/library' => 'user#library'
   ## Settings
-  get 'u/view' => 'user#index', as: :index
-  patch 'u/try_view' => 'user#try_index', as: :try_index
+  get 'u/edit' => 'user#index', as: :index
+  patch 'u/try_edit' => 'user#try_index', as: :try_index
   ## Show
   get 'u/:id' => 'user#show', as: :user
 
