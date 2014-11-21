@@ -37,6 +37,7 @@ Rails.application.routes.draw do
   get 'd/search' => 'design#search', as: 'search'
   ## View All
   get 'd/view-all' => 'design#index'
+  post 'd/view-all' => 'design#index'
   ## Add A Bookmark
   post 'd/bookmark' => 'design#try_bookmark'
   ## Show
