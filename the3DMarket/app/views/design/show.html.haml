@@ -23,7 +23,8 @@
         -# Download path is @design.filepath
       .form-group
         %button.form-control.btn.btn-primary
-          Download
+          %a{:href => @design.filepath}
+            Download
       .form-group
         %button.form-control.btn.btn-default
           License

@@ -17,7 +17,8 @@
     - @designs.each do |design|
       .col-md-2
         .thumbnail
-          %img{:src => design.imagefilepath}
+          %a{:href => design_path(design.id)}
+            %img{:src => design.imagefilepath}
           .caption
             %h2
               %a{:href => design_path(design.id)}
