@@ -1,5 +1,5 @@
 Given /^a user visits the edit user page but has not logged in$/ do
-	visit "/u/view"
+	visit "/u/edit"
 end
 
 Given /^a logged in user wants to edit his information at "([^"]*)"$/ do |user_edit_page|
@@ -52,7 +52,7 @@ But /^when the user enters in valid information and goes to the edit user page$/
 	fill_in "username",		with: "test"
 	fill_in "password", 		with: "test"
 	click_button "Login"
-	visit "/u/view"
+	visit "/u/edit"
 end
 
 Then /^they should see the edit user page$/ do
@@ -141,7 +141,7 @@ When /^they edit with a valid email, password, and confirmation password$/ do
 	fill_in "password",		with: "test"
 	click_button "Login"
 
-	visit "/u/view"
+	visit "/u/edit"
 
 	fill_in "email",		with: "hello@mail.csuchico.edu"
 	fill_in "password",		with: "1234"
