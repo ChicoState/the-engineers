@@ -1,0 +1,19 @@
+.container
+  %h1
+    My Library
+  .row
+    - @bookmarks.each do |b|
+      - design = b.design
+      .col-md-2
+        .thumbnail
+          %a{:href => design_path(design.id)}
+            %img{:src => design.imagefilepath}
+          .caption
+            %h2
+              %a{:href => design_path(design.id)}
+                = design.title
+            %p
+              = design.sdesc
+            .row
+              %a.col-md-8.col-md-push-2.btn.btn-primary.btn-sm{:href => design_path(design.id)}
+                View details

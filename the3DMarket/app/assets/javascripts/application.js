@@ -14,4 +14,6 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require three
-//= require_tree .
+//= require Detector
+//= require STLLoader
+//= require stats

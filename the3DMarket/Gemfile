@@ -21,6 +21,8 @@ gem 'haml'
 # For bootstrap
 gem 'bootstrap-sass'
 
+gem 'gherkin'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -36,7 +38,7 @@ gem 'rspec-rails', '2.13.1'
 
 group :test do
 	gem 'capybara', '2.1.0'
-	gem 'cucumber-rails', '1.4.0', :require => false
+	gem 'cucumber-rails', :require => false
 	gem 'database_cleaner'
 end
 # Use ActiveModel has_secure_password
@@ -50,4 +52,4 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-
+gem 'tzinfo-data', '1.2014.7'

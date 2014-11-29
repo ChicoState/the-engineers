@@ -1,0 +1,73 @@
+-# HTML 5 meta tag
+!!! 5
+%html
+  %head
+    %title
+      The3DMarket
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = stylesheet_link_tag    params[:controller]
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    %div#page_wrapper
+      .heading_bar
+        %h1
+          3DEx
+        %ul
+          %li
+            %a{:href => ""}
+              Browse
+          %li
+            %a{:href => ""}
+              Create
+          %li
+            %a{:href => ""}
+              Upload
+        %span.signin
+          %a{:href => ""}
+            Join
+          \/
+          %a{:href => ""}
+            Sign in
+        %span.search
+          %button
+            search
+          %input{:type => "text"}
+      %div.container
+        = yield
+      .footer
+        %img{:src => "imgs/2.jpg"}
+        .clear
+        %h3
+          3DEx
+        %div.links
+          %ul
+            %li
+              %a.sectionTitle{:href => ""}
+                About us
+            %li
+              %a{:href => ""}
+                Blah Blah Blah
+            %li
+              %a{:href => ""}
+                Blah Blah
+          %ul
+            %li
+              %a.sectionTitle{:href => ""}
+                Contact us
+            %li
+              %a{:href => ""}
+                Blah Blah Blah
+            %li
+              %a{:href => ""}
+                Blah Blah
+          %ul
+            %li
+              %a.sectionTitle{:href => ""}
+                Stuff
+            %li
+              %a{:href => ""}
+                Blah Blah Blah
+            %li
+              %a{:href => ""}
+                Blah Blah

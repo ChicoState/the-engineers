@@ -6,6 +6,7 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = stylesheet_link_tag    params[:controller]
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = javascript_include_tag params[:controller]
     = csrf_meta_tags
   %body
     %nav.navbar.navbar-default.navbar-fixed-top{ :role => "navigation" }
@@ -21,21 +22,19 @@
             %a{:href => '/u/create'}
               Create
           %li
-            %a
+            %a{:href => '/d/create'}
               Upload
+          - if @user
+            %li
+              %a{:href => '/u/library'}
+                My Library
         %ul.nav.navbar-nav.navbar-right
           %li.dropdown
-            %a.dropdown-toggle{ :"data-toggle" => "dropdown", :href => '/login'}
-              Login
-              %span.caret
-            %ul.dropdown-menu.login-dropdown
-              .form-group
-                %input.form-control{:type => "text", :placeholder => "Username"}/
-              .form-group
-                %input.form-control{:type => "password", :placeholder => "Password"}/
-              .form-group
-                %button.btn.btn-default{:type => "submit"}
-                  Submit
+            - if @user
+              = link_to 'Logout', logout_path, :method => :post
+            - else
+              %a.dropdown-toggle{ :"data-toggle" => "dropdown", :href => '/login'}
+                Login
 
   .main-content
     = yield
@@ -47,8 +46,8 @@
           %a{:href => '/about'}
             About
         %li
-          %a
+          %a{:href => '/contact'}
             Contact
         %li
-          %a
+          %a{:href => '/legal'}
             Legal
