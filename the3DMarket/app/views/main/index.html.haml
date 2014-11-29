@@ -1,32 +1,29 @@
-
 .jumbotron
   .container
-
     .row
       .col-md-8
         %h1
-          Featured Design
+          = @main_feature.title
         %p
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras imperdiet enim ac augue auctor viverra.
+          = @main_feature.sdesc
         %p
           %a.btn.btn-primary.btn-lg{ :role => "navigation" }
             Purchase
       .col-md-3.pull-right
         %a.thumbnail{:href => ""}
-          %img(src="http://placekitten.com/245/245")
-
+          %img(src="#{@main_feature.imagefilepath}")
 
 .container
   .row
-    - 3.times do |ntime|
+    - @minor_feature.each do |feature|
       .col-md-4
         .thumbnail
-          %img(src="http://placekitten.com/245/245")
+          %img(src="#{feature.imagefilepath}")
           .caption
             %h2
-              Design
+              = feature.title
             %p
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum incidunt maxime ducimus repudiandae molestias, quibusdam nostrum cumque minima numquam, eos quod aspernatur vel veritatis corrupti, recusandae beatae! Enim, magni, debitis.
+              = feature.sdesc
             %a.btn.btn-primary.btn-sm{:href => ""}
               Purchase
             %a.btn.btn-default.btn-sm{:href => ""}

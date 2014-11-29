@@ -80,8 +80,7 @@ class DesignController < ApplicationController
       query_string = "title LIKE :title"
       added = true
     end
-    #puts "XXXXXXXXXXXXXX DATE XXXXXXXXXXXXXXXXXX"
-    #puts params[:date]
+    
     if params[:date].present?
       conditions[:created_at] = params[:date]
       query_string += " AND " if added
@@ -100,7 +99,14 @@ class DesignController < ApplicationController
   end
   # Design View All page
   def index
-    @designs = Design.first(10)
+    @page_size = 5
+    if params[:offset].present? and params[:offset].to_i > 0
+      @current_offset = params[:offset].to_i
+      @designs = Design.order('created_at DESC').offset(@current_offset)
+    else
+      @designs = Design.first(@page_size)
+      @current_offset = 0
+    end
   end
   def about
     if params[:id].nil? # Handle 

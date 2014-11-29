@@ -4,7 +4,9 @@
   .row
     .col-md-6.col-md-push-3
       .design-image.stl-scene{:file_path => @design.filepath}
-      -# %img.design-image{:src => @design.imagefilepath}
+  .row
+    %p
+      = @design.sdesc
   .row
     .col-md-4.col-md-push-2
       .form-group
