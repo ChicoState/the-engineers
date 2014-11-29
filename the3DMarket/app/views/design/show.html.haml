@@ -24,8 +24,9 @@
           %option{:value => "3"} Settings3
         -# Download path is @design.filepath
       .form-group
-        %button.form-control.btn.btn-primary
-          Download
+        %form{:method => "get", :action => @design.filepath}
+          %button.form-control.btn.btn-primary{:type => "submit"}
+            Download
       .form-group
         %button.form-control.btn.btn-default
           License
