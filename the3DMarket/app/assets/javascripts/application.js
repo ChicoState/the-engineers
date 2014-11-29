@@ -13,7 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require bootstrap-sprockets
 //= require three
 //= require Detector
 //= require STLLoader
 //= require stats
+//= require_tree .
