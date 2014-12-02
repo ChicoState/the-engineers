@@ -8,8 +8,8 @@ class UserController < ApplicationController
   end
   # User Show page
   def show
-	  @user = User.find(params[:id])
     if !@user.present?
+      cookies[:error] = "You must be logged in to do that"
       redirect_to(login_path) and return
     else
       @view_user = User.find(params[:id])
@@ -61,7 +61,7 @@ class UserController < ApplicationController
   end
   # User Settings page
   def index
-	  if !@user.present?
+    if !@user.present?
       cookies[:error] = "You must be logged in to do that"
       redirect_to(login_path) and return
     end
@@ -119,6 +119,10 @@ class UserController < ApplicationController
 
   # Show current user's library
   def library
+    if !@user.present?
+      cookies[:error] = "You must be logged in to do that"
+      redirect_to(login_path) and return
+    end
     @bookmarks = @user.bookmarks
   end
 
