@@ -3,13 +3,14 @@
     - @designs.each do |design|
       .col-md-4
         .thumbnail
-          %img{:src => design.imagefilepath}
+          %a{:href => design_path(design.id)}
+            %img{:src => design.imagefilepath}
           .caption
             %h2
               %a{:href => design_path(design.id)}
                 = design.title
             %p
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum incidunt maxime ducimus repudiandae molestias, quibusdam nostrum cumque minima numquam, eos quod aspernatur vel veritatis corrupti, recusandae beatae! Enim, magni, debitis.
+              = design.sdesc
             %a.btn.btn-primary.btn-sm{:href => ""}
               Purchase
             %a.btn.btn-default.btn-sm{:href => design_path(design.id)}
@@ -17,7 +18,7 @@
   .row
     %h2
       = @view_user.username
-    %img{:src => "imgs/1.jpg"}
+    %img{:src => "/assets/user.png"}
     .print
       %ul
         %input{:type => "button", :value => "Info"}
