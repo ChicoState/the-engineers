@@ -38,7 +38,7 @@ gem 'rspec-rails', '2.13.1'
 
 group :test do
 	gem 'capybara', '2.1.0'
-	gem 'cucumber-rails', :require => false
+	gem 'cucumber-rails', '1.4.1', :require => false
 	gem 'database_cleaner'
 end
 # Use ActiveModel has_secure_password
@@ -52,4 +52,5 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+# Use tzinfo-data for windows
 gem 'tzinfo-data', '1.2014.7'

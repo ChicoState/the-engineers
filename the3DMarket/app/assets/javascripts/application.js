@@ -17,3 +17,4 @@
 //= require Detector
 //= require STLLoader
 //= require stats
+//= require design
