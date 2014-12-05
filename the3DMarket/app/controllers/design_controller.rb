@@ -40,11 +40,11 @@ class DesignController < ApplicationController
                   user_id: @user.id,
                   license_id: 1})
     
-    cur_design.filepath = '/designs/' + @user.id.to_s + "/" + cur_design.id.to_s + '.stl'
-    cur_design.imagefilepath = '/designs/' + @user.id.to_s + "/" + cur_design.id.to_s + '.jpg'
+    cur_design.filepath = '/designs/' + cur_design.id.to_s + '.stl'
+    cur_design.imagefilepath = '/designs/' + cur_design.id.to_s + '.jpg'
     
     # Make folder for user if it doesn't exist
-    dir = File.dirname('/designs/' + @user.id.to_s + '/')
+    dir = File.dirname('/designs/')
     unless File.directory?(dir)
       FileUtils.mkdir_p(dir)
     end
