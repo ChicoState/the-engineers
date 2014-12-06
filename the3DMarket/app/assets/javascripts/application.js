@@ -17,6 +17,6 @@
 //= require three
 //= require Detector
 //= require STLLoader
-//= require stats
+//= require TrackballControls
 //= require design
 //= require_tree .

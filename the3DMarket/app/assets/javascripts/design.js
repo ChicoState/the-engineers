@@ -1,83 +1,87 @@
+if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
+
+var camera, cameraTarget, controls, scene, renderer;
+
 function init () {
-  //Camera settings.                FOV vv  aspect ratio, camera frustum
-  camera = new THREE.PerspectiveCamera(55, 640 / 480, 1, 15);
-  camera.position.set(3, 0.15, 10);
-  cameraTarget = new THREE.Vector3(0, -0.25, 0);
+
+  camera = new THREE.PerspectiveCamera( 30, 640 / 480, 1, 1000 );
+  camera.position.set( 2, 1, 2 );
+  
+  controls = new THREE.TrackballControls( camera );
+
+  controls.rotateSpeed = 5.0;
+  controls.zoomSpeed = 5;
+  //controls.panSpeed = 2;
+
+  controls.noZoom = true;
+  controls.noPan = true;
+
+  controls.staticMoving = true;
+  controls.dynamicDampingFactor = 1;
+  
+  cameraTarget = new THREE.Vector3( 0, 0.25, 0 );
+
   scene = new THREE.Scene();
-  scene.fog = new THREE.Fog(0xAAAAAA, 2, 15);
+  scene.fog = new THREE.Fog( 0xc8c8c8, 2, 5 );
+
   // Ground
-  //this sets up the ground layer.  We can replace this with a grid, but I still need to find out how.
-  var plane = new THREE.Mesh(new THREE.PlaneGeometry(40, 40), new THREE.MeshPhongMaterial({
-      ambient: 0x999999,
-      color: 0x999999,
-      specular: 0x101010
-  }));
-  plane.rotation.x = -Math.PI / 2;
-  plane.position.y = -0.5;
-  //scene.add(plane);
-  // Add Shadows
+
+  var plane = new THREE.Mesh( new THREE.PlaneGeometry( 8, 8 ), new THREE.MeshPhongMaterial( { ambient: 0x858585, color: 0x8c8c8c, specular: 0x000000 } ) );
+  plane.rotation.x = -Math.PI/2;
+  scene.add( plane );
+
   plane.receiveShadow = true;
-  //stuff I don't understand.
+
+  var gridHelper = new THREE.GridHelper( 4, 0.25 );
+  gridHelper.setColors(0xFFFFFF,0xFFFFFF)		
+  scene.add( gridHelper );
+
+  // file
+
   var loader = new THREE.STLLoader();
-  loader.addEventListener('load', function(event) {
-    var geometry = event.content;
-    //set up STL material stuff
-    //Add some attributes (color, etc)
-    var material = new THREE.MeshPhongMaterial({
-        ambient: 0x9999DD,
-        color: 0x5555BB,
-        specular: 0x111111,
-        shininess: 10
-    });
-    //ambient is the diffraction lighting, color is fill color, specular is reflection shading, and shininess is amount of reflection
-    var mesh = new THREE.Mesh(geometry, material);
-    //this affects the position, size, and rotation of the STL model.  Changethese as you see fit to make the scene look good
-    mesh.position.set(0, -0.25, 0);
-    mesh.rotation.set(-Math.PI/2, 0, 0);
-    mesh.scale.set(0.01, 0.01, 0.01);
-    mesh.castShadow = true;
-    mesh.receiveShadow = true;
-    scene.add(mesh);
-  });
-  //load an STL file
+  loader.addEventListener( 'load', function ( event ) {
+
+	  var geometry = event.content;
+	  var material = new THREE.MeshPhongMaterial( { ambient: 0x0a65b6, color: 0x0a65b6, specular: 0x0a65b6, shininess: 500 } );
+	  var mesh = new THREE.Mesh( geometry, material );
+	  var box = new THREE.Box3().setFromObject( mesh );
+	  var a = new THREE.Vector3();
+	  a = box.size();
+
+	  mesh.position.set( 0, 0, 0 );
+	  mesh.rotation.set( -Math.PI/2 , 0, 0);
+	  mesh.scale.set( 1.0/(2*a.x), 1.0/(2*a.x), 1.0/(2*a.x) );
+	  //mesh.scale.set( 1.0/(2*1), 1.0/(2*1), 1.0/(2*1) );
+	  mesh.castShadow = true;
+	  mesh.receiveShadow = true;
+    alert (box.size().x)
+	  scene.add( mesh );
+
+  } );
   loader.load($('.stl-scene').attr("file_path"));
-  // Binary files
-  var material = new THREE.MeshPhongMaterial({
-    ambient: 0x555555,
-    color: 0xFF0000,
-    specular: 0x00FF00,
-    shininess: 200
-  });
+
   // Lights
-  //this defines the ambient lighting (think bright sky)
-  scene.add(new THREE.AmbientLight(0x404040));
-  // this adds a highlight/shadow, defined elsewhere
-  addShadowedLight(1, 1, 1, 0xffffff, .5);
+
+  scene.add( new THREE.AmbientLight( 0x666666 ) );
+
+  addShadowedLight( 1, 1, 1, 0xffffff, 1 );
+  addShadowedLight( 0, 1, -1, 0xffffff, 1 );
+  addShadowedLight( 0, -1, 0, 0xffffff, 1.5 );
+
   // renderer
-  // some render settings - always anti-alias
-  renderer = new THREE.WebGLRenderer({
-    antialias: true
-  });
-  renderer.setSize(500, 500);
-  //this is where we set the size of the viewing pane
-  renderer.setClearColor(scene.fog.color, 1);
-  //dunno what these do
+
+  renderer = new THREE.WebGLRenderer( { antialias: true } );
+  renderer.setSize( 640, 480 );
+
+  renderer.setClearColor( scene.fog.color, 1 );
+
   renderer.gammaInput = true;
   renderer.gammaOutput = true;
-  //pretty sure these shadow settings allow shadows to render
+
   renderer.shadowMapEnabled = true;
   renderer.shadowMapCullFace = THREE.CullFaceBack;
-  $('.stl-scene').append(renderer.domElement);
-  // stats  -- here's where we see the framerate counter.
-  //Comment this section to disable that feature. Also check animate function
-  /*
-  stats = new Stats();
-  stats.domElement.style.position = 'relative';
-  stats.domElement.style.top = '0px';
-  $('.stl-scene').append(stats.domElement);
-  */
-  //
-  //window.addEventListener('resize', onWindowResize, false);
+
+  $('.stl-scene').append( renderer.domElement );
 }
 //this defines the shadowedlight function above.
 function addShadowedLight(x, y, z, color, intensity) {
@@ -99,25 +103,17 @@ function addShadowedLight(x, y, z, color, intensity) {
   directionalLight.shadowDarkness = 0.15;
 }
 
-/*
-function onWindowResize() {
-  camera.aspect = window.innerWidth / window.innerHeight;
-  camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight);
-}
-*/
-
 function animate() {
-  requestAnimationFrame(animate);
-  render();
-  //stats.update();
+  requestAnimationFrame( animate );
+	//controls.update();
+	render();
 }
 
 function render() {
   //this handles rotation
-  var timer = Date.now() * 0.0005;
-  camera.position.x = Math.cos(timer) * 3;
-  camera.position.z = Math.sin(timer) * 3;
+  //var timer = Date.now() * 0.0005;
+  //camera.position.x = Math.cos(timer) * 3;
+  //camera.position.z = Math.sin(timer) * 3;
   camera.lookAt(cameraTarget);
   renderer.render(scene, camera);
 }
