@@ -17,6 +17,12 @@
         .form-group
           %input.form-control.password{:type => "password", :name => "password",:placeholder => "password"}
       - if @user.present?
-        %input.form-control.btn.btn-primary{:type => "submit", :value => "Logout"}
+        .form-group
+          %input.form-control.btn.btn-primary{:type => "submit", :value => "Logout"}
       - else
-        %input.form-control.btn.btn-primary{:type => "submit", :value => "Login"}
+        .form-group
+          %input.form-control.btn.btn-primary{:type => "submit", :value => "Login"}
+        .form-group
+          %a{:href => u_create_path}
+            Don't have an account? Sign up now!
+
