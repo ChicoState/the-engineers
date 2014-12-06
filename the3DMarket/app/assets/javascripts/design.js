@@ -50,7 +50,11 @@ function init() {
 
 	  mesh.position.set( 0, 0, 0 );
 	  mesh.rotation.set( -Math.PI/2 , 0, 0);
-	  mesh.scale.set( 1/(2*a.x), 1/(2*a.x), 1/(2*a.x) );
+	  if (a.x > 0)
+	    mesh.scale.set( 1/(2*a.x), 1/(2*a.x), 1/(2*a.x) );
+	  else
+	    mesh.scale.set(0.01, 0.01, 0.01);
+	  
 	  mesh.castShadow = true;
 	  mesh.receiveShadow = true;
 
