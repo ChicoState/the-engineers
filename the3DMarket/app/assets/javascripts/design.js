@@ -33,7 +33,7 @@ function init () {
     var mesh = new THREE.Mesh(geometry, material);
     //this affects the position, size, and rotation of the STL model.  Changethese as you see fit to make the scene look good
     mesh.position.set(0, -0.25, 0);
-    mesh.rotation.set(0, -Math.PI / 2, 0);
+    mesh.rotation.set(-Math.PI/2, 0, 0);
     mesh.scale.set(0.01, 0.01, 0.01);
     mesh.castShadow = true;
     mesh.receiveShadow = true;
@@ -48,24 +48,13 @@ function init () {
     specular: 0x00FF00,
     shininess: 200
   });
-  var loader = new THREE.STLLoader();
-  loader.addEventListener('load', function(event) {
-    var geometry = event.content;
-    var mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(0, -0.37, -0.6);
-    mesh.rotation.set(-Math.PI / 2, 0, 0);
-    mesh.scale.set(2, 2, 2);
-    mesh.castShadow = true;
-    mesh.receiveShadow = true;
-    scene.add(mesh);
-  });
   // Lights
   //this defines the ambient lighting (think bright sky)
   scene.add(new THREE.AmbientLight(0x404040));
-  //this adds a highlight/shadow, defined elsewhere
+  // this adds a highlight/shadow, defined elsewhere
   addShadowedLight(1, 1, 1, 0xffffff, .5);
   // renderer
-  //some render settings                always anti-alias
+  // some render settings - always anti-alias
   renderer = new THREE.WebGLRenderer({
     antialias: true
   });
@@ -110,11 +99,13 @@ function addShadowedLight(x, y, z, color, intensity) {
   directionalLight.shadowDarkness = 0.15;
 }
 
+/*
 function onWindowResize() {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.innerHeight);
 }
+*/
 
 function animate() {
   requestAnimationFrame(animate);
