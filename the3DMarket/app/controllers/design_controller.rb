@@ -102,7 +102,7 @@ class DesignController < ApplicationController
     @page_size = 5
     if params[:offset].present? and params[:offset].to_i > 0
       @current_offset = params[:offset].to_i
-      @designs = Design.order('created_at ASC').offset(@current_offset)
+      @designs = Design.order('created_at ASC').offset(@current_offset).first(@page_size)
     else
       @designs = Design.first(@page_size)
       @current_offset = 0
