@@ -19,9 +19,6 @@
             %a{:href => '/u/browse'}
               Browse
           %li
-            %a{:href => '/u/create'}
-              Create
-          %li
             %a{:href => '/d/create'}
               Upload
           - if @user
@@ -34,7 +31,7 @@
               = link_to 'Logout', logout_path, :method => :post
             - else
               %a.dropdown-toggle{ :"data-toggle" => "dropdown", :href => '/login'}
-                Login
+                Login / Signup
 
   .main-content
     = yield
