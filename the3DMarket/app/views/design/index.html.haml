@@ -13,7 +13,7 @@
       %input.form-control.btn{:type => "reset", :value => "Clear"}
   .row
     - @designs.each do |design|
-      .col-md-2
+      .col-md-3
         .thumbnail
           %a{:href => design_path(design.id)}
             %img{:src => design.imagefilepath}
@@ -23,16 +23,19 @@
                 = design.title
             %p
               = design.sdesc
-            %a.btn.btn-primary.btn-sm{:href => ""}
-              Purchase
-            %a.btn.btn-default.btn-sm{:href => design_path(design.id)}
-              Learn more 
-.something
-  - if @current_offset > 0
-    = form_tag(d_view_all_path) do
-      = hidden_field_tag 'offset', @current_offset >= @page_size ? @current_offset - @page_size : 0
-      %input.form-control.btn.btn-primary{:type => "submit", :value => "Previous"}
-  - if @designs.size >= @page_size
-    = form_tag(d_view_all_path) do
-      = hidden_field_tag 'offset', @current_offset + @page_size
-      %input.form-control.btn.btn-primary{:type => "submit", :value => "Next"}
+            %a.btn.btn-primary.btn-sm{:href => design_path(design.id)}
+              View details 
+  .pagination-links.row
+    .col-md-2
+      - if @current_offset > 0
+        = form_tag(d_view_all_path) do
+          = hidden_field_tag 'offset', @current_offset >= @page_size ? @current_offset - @page_size : 0
+          %button.form-control.btn.btn-info.pagination-previous{:type => "submit"}
+            Previous
+    .col-md-2.col-md-push-8
+      - if @designs.size >= @page_size
+        = form_tag(d_view_all_path) do
+          = hidden_field_tag 'offset', @current_offset + @page_size
+          %button.form-control.btn.btn-info.pagination-next{:type => "submit"}
+            Next
+  

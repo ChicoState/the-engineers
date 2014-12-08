@@ -116,7 +116,26 @@ a
 .design-image
   max-width: 100%
 
+.thumbnail
+  height: 200px !important
+  position: relative
+
 .thumbnail .caption h2
+  font-size: 20px
+  display: block
   text-overflow: ellipsis
   overflow: hidden
   word-wrap: break-word
+  max-height: 46px
+
+.thumbnail .btn
+  position: absolute
+  bottom: 10px
+  left: 10px
+  right: 10px
+
+.pagination-previous:before
+  content: '\00AB'
+
+.pagination-next:after
+  content: '\00BB'
