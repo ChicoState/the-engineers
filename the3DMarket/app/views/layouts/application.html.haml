@@ -30,7 +30,7 @@
             - if @user
               = link_to 'Logout', logout_path, :method => :post
             - else
-              %a.dropdown-toggle{ :"data-toggle" => "dropdown", :href => '/login'}
+              %a.dropdown-toggle{ :href => '/login'}
                 Login / Signup
 
   .main-content
