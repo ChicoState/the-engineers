@@ -38,6 +38,11 @@
           %button.form-control.btn.btn-default.bookmark-design
             Purchase 
 :javascript
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
   $(document).ready(function(){
     if (!Detector.webgl) Detector.addGetWebGLMessage();
     var container, stats;

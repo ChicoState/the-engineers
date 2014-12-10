@@ -1,29 +1,34 @@
 .container
-  .row
-    - @designs.each do |design|
-      .col-md-4
-        .thumbnail
-          %a{:href => design_path(design.id)}
-            %img{:src => design.imagefilepath}
-          .caption
-            %h2
-              %a{:href => design_path(design.id)}
-                = design.title
-            %p
-              = design.sdesc
-            %a.btn.btn-primary.btn-sm{:href => ""}
-              Purchase
-            %a.btn.btn-default.btn-sm{:href => design_path(design.id)}
-              Learn more
-  .row
+  .col-md-3
     %h2
       = @view_user.username
-    %img{:src => "/assets/user.png"}
-    .print
-      %ul
-        %input{:type => "button", :value => "Info"}
-        %select.settings
+    .form-group
+      %img{:src => "/assets/user.png"}
+    .print.form-group
+      .form-group
+        %input.btn.btn-default{:type => "button", :value => "Info"}
+        %input.btn.btn-default{:type => "button", :value => "Licenses"}
+      .form-group
+        %select.form-control.settings
           %option{:value => "1"} Settings
           = succeed "Settings3" do
             %option{:value => "2"} Settings2
-        %input{:type => "button", :value => "Licenses"}
+  .col-md-9
+    - @designs.in_groups_of(3, false).each_with_index do |group|
+      .row
+        - group.each do |item|
+          .col-md-4
+            .thumbnail
+              %a{:href => design_path(item.id)}
+                %img{:src => item.imagefilepath}
+              .caption
+                %h2
+                  %a{:href => design_path(item.id)}
+                    = item.title
+                %p
+                  = item.sdesc
+                %a.btn.btn-primary.btn-sm{:href => ""}
+                  Purchase
+                %a.btn.btn-default.btn-sm{:href => design_path(item.id)}
+                  Learn more
+

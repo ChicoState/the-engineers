@@ -8,10 +8,10 @@
       Profile Settings
     = form_for @user, :url => {action: "try_index"} do
       .form-group
-        %input.form-control.email{:type=>"email", :name=>"email", :placeholder=>"email"}
+        %input.form-control.email{:type => "email", :name => "email", :placeholder => "Email"}
       .form-group
-        %input.form-control.password{:type=>"password", :name=>"password", :placeholder=>"password"}
+        %input.form-control.password{:type => "password", :name => "password", :placeholder => "Password"}
       .form-group
-        %input.form-control.password{:type=>"password", :name=>"conf_password", :placeholder=>"confirm_password"}
+        %input.form-control.password{:type => "password", :name => "confirm_password", :placeholder => "Confirm Password"}
       .form-group
-        %input.form-control.btn.btn-primary{"type"=>"submit", "value"=>"Save Changes!"}
+        %input.form-control.btn.btn-primary{:type => "submit", :value => "Save"}

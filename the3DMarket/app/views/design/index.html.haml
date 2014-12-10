@@ -11,20 +11,21 @@
         %input.form-control{:type => "text", :name => "author", :placeholder => "Author Name"}
       %input.form-control.btn.btn-primary{:type => "submit", :value => "Search"}
       %input.form-control.btn{:type => "reset", :value => "Clear"}
-  .row
-    - @designs.each do |design|
-      .col-md-3
-        .thumbnail
-          %a{:href => design_path(design.id)}
-            %img{:src => design.imagefilepath}
-          .caption
-            %h2
-              %a{:href => design_path(design.id)}
-                = design.title
-            %p
-              = design.sdesc
-            %a.btn.btn-primary.btn-sm{:href => design_path(design.id)}
-              View details 
+  - @designs.in_groups_of(4, false).each_with_index do |group|
+    .row
+      - group.each do |item|
+        .col-md-3
+          .thumbnail
+            %a{:href => design_path(item.id)}
+              %img{:src => item.imagefilepath}
+            .caption
+              %h2
+                %a{:href => design_path(item.id)}
+                  = item.title
+              %p
+                = item.sdesc
+              %a.btn.btn-primary.btn-sm{:href => design_path(item.id)}
+                View details 
   .pagination-links.row
     .col-md-2
       - if @current_offset > 0

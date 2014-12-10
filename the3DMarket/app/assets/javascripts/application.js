@@ -13,8 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require bootstrap-sprockets
 //= require three
 //= require Detector
 //= require STLLoader
-//= require stats
+//= require TrackballControls
 //= require design
+//= require_tree .

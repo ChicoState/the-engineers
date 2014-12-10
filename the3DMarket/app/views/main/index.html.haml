@@ -7,24 +7,23 @@
         %p
           = @main_feature.sdesc
         %p
-          %a.btn.btn-primary.btn-lg{ :role => "navigation" }
+          %a.btn.btn-primary.btn-lg{ :href => design_path(@main_feature.id), :role => "navigation" }
             Purchase
       .col-md-3.pull-right
         %a.thumbnail{:href => ""}
           %img(src="#{@main_feature.imagefilepath}")
 
 .container
-  .row
-    - @minor_feature.each do |feature|
-      .col-md-4
-        .thumbnail
-          %img(src="#{feature.imagefilepath}")
-          .caption
-            %h2
-              = feature.title
-            %p
-              = feature.sdesc
-            %a.btn.btn-primary.btn-sm{:href => ""}
-              Purchase
-            %a.btn.btn-default.btn-sm{:href => ""}
-              Learn more
+  - @minor_feature.in_groups_of(3, false).each_with_index do |group|
+    .row
+      - group.each do |item|
+        .col-md-4
+          .thumbnail
+            %img(src="#{item.imagefilepath}")
+            .caption
+              %h2
+                = item.title
+              %p
+                = item.sdesc
+              %a.btn.btn-primary.btn-sm{:href => design_path(item.id)}
+                View details 
