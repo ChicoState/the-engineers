@@ -20,8 +20,8 @@ ActiveRecord::Schema.define(version: 20141111141040) do
     t.datetime "updated_at"
   end
 
-  add_index "bookmarks", ["design_id"], name: "index_bookmarks_on_design_id", using: :btree
-  add_index "bookmarks", ["user_id"], name: "index_bookmarks_on_user_id", using: :btree
+  add_index "bookmarks", ["design_id"], name: "index_bookmarks_on_design_id"
+  add_index "bookmarks", ["user_id"], name: "index_bookmarks_on_user_id"
 
   create_table "designs", force: true do |t|
     t.string   "title"
@@ -34,8 +34,8 @@ ActiveRecord::Schema.define(version: 20141111141040) do
     t.datetime "updated_at"
   end
 
-  add_index "designs", ["license_id"], name: "index_designs_on_license_id", using: :btree
-  add_index "designs", ["user_id"], name: "index_designs_on_user_id", using: :btree
+  add_index "designs", ["license_id"], name: "index_designs_on_license_id"
+  add_index "designs", ["user_id"], name: "index_designs_on_user_id"
 
   create_table "licenses", force: true do |t|
     t.string   "title"
